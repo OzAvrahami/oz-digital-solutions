@@ -226,7 +226,6 @@ export const en = {
       linkedIn: 'LinkedIn',
       github: 'GitHub',
     },
-    unavailableLabel: 'Coming soon',
     copyright: '© 2026 Oz Avrahami. All rights reserved.',
   },
   mockups: {

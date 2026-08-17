@@ -12,14 +12,11 @@ interface HeaderProps {
   dictionary: SiteDictionary
 }
 
-const implementedSections = new Set(['work', 'services', 'process', 'about', 'contact'])
-
 export default function Header({ locale, dictionary }: HeaderProps) {
   const navigationItems: HeaderNavigationItem[] = navigationOrder.map((key) => ({
     key,
     label: dictionary.navigation[key],
     href: `/${locale}#${key}`,
-    enabled: implementedSections.has(key),
   }))
 
   return (
@@ -34,27 +31,15 @@ export default function Header({ locale, dictionary }: HeaderProps) {
         </Link>
 
         <nav aria-label={dictionary.header.menuLabel} className="hidden items-center gap-8 desktop:flex">
-          {navigationItems.map((item) =>
-            item.enabled ? (
-              <Link
-                key={item.key}
-                href={item.href}
-                className="rounded text-[15px] font-medium text-text-secondary transition-colors hover:text-text"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <span
-                key={item.key}
-                role="link"
-                aria-disabled="true"
-                title={dictionary.footer.unavailableLabel}
-                className="cursor-not-allowed text-[15px] font-medium text-text-quiet"
-              >
-                {item.label}
-              </span>
-            ),
-          )}
+          {navigationItems.map((item) => (
+            <Link
+              key={item.key}
+              href={item.href}
+              className="rounded text-[15px] font-medium text-text-secondary transition-colors hover:text-text"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-5">
@@ -75,7 +60,6 @@ export default function Header({ locale, dictionary }: HeaderProps) {
             labels={dictionary.header}
             primaryCta={dictionary.hero.primaryCta}
             contactHref={`/${locale}#contact`}
-            unavailableLabel={dictionary.footer.unavailableLabel}
             navigationItems={navigationItems}
           />
         </div>

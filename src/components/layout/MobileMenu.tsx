@@ -12,7 +12,6 @@ export interface HeaderNavigationItem {
   key: string
   label: string
   href: string
-  enabled: boolean
 }
 
 interface MobileMenuProps {
@@ -21,7 +20,6 @@ interface MobileMenuProps {
   labels: SiteDictionary['header']
   primaryCta: string
   contactHref: string
-  unavailableLabel: string
   navigationItems: readonly HeaderNavigationItem[]
 }
 
@@ -37,7 +35,6 @@ export default function MobileMenu({
   labels,
   primaryCta,
   contactHref,
-  unavailableLabel,
   navigationItems,
 }: MobileMenuProps) {
   const [open, setOpen] = useState(false)
@@ -145,28 +142,16 @@ export default function MobileMenu({
           </div>
 
           <nav aria-label={labels.menuLabel} className="mt-9 flex flex-col">
-            {navigationItems.map((item) =>
-              item.enabled ? (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="border-b border-white/[0.07] py-[13px] text-[26px] font-bold text-text"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <span
-                  key={item.key}
-                  role="link"
-                  aria-disabled="true"
-                  title={unavailableLabel}
-                  className="cursor-not-allowed border-b border-white/[0.07] py-[13px] text-[26px] font-bold text-text/45"
-                >
-                  {item.label}
-                </span>
-              ),
-            )}
+            {navigationItems.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                onClick={closeMenu}
+                className="border-b border-white/[0.07] py-[13px] text-[26px] font-bold text-text"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           <ButtonLink

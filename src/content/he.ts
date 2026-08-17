@@ -226,7 +226,6 @@ export const he = {
       linkedIn: 'LinkedIn',
       github: 'GitHub',
     },
-    unavailableLabel: 'ייווסף בקרוב',
     copyright: '© 2026 עוז אברהמי. כל הזכויות שמורות.',
   },
   mockups: {

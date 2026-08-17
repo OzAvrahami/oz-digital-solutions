@@ -143,7 +143,6 @@ export interface SiteDictionary {
     connectTitle: string
     serviceLabels: readonly string[]
     socialLabels: Record<SocialKey, string>
-    unavailableLabel: string
     copyright: string
   }
   mockups: {

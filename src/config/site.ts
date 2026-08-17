@@ -6,7 +6,7 @@ export interface ProjectLinkConfig {
 }
 
 export interface SiteConfig {
-  productionSiteUrl: string | null
+  productionSiteUrl: string
   email: string | null
   linkedInUrl: string | null
   githubUrl: string | null
@@ -20,7 +20,7 @@ export interface SiteConfig {
 }
 
 export const siteConfig = {
-  productionSiteUrl: null,
+  productionSiteUrl: 'https://ozavrahami.co.il',
   email: 'contact@ozavrahami.co.il',
   linkedInUrl: 'https://www.linkedin.com/in/oz-avrahami-b209584a/',
   githubUrl: 'https://github.com/OzAvrahami',
@@ -49,3 +49,9 @@ export const siteConfig = {
     },
   },
 } as const satisfies SiteConfig
+
+export function getSiteUrl(pathname = '/') {
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
+
+  return new URL(normalizedPath, `${siteConfig.productionSiteUrl}/`).toString()
+}
