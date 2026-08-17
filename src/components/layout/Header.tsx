@@ -12,7 +12,7 @@ interface HeaderProps {
   dictionary: SiteDictionary
 }
 
-const implementedSections = new Set(['work', 'services'])
+const implementedSections = new Set(['work', 'services', 'process', 'about'])
 
 export default function Header({ locale, dictionary }: HeaderProps) {
   const navigationItems: HeaderNavigationItem[] = navigationOrder.map((key) => ({
