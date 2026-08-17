@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 
-export interface PillProps extends HTMLAttributes<HTMLSpanElement> {
+interface PillProps extends HTMLAttributes<HTMLSpanElement> {
   tone?: 'neutral' | 'accent' | 'success'
 }
 

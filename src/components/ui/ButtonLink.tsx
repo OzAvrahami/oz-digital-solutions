@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from 'react'
 
-export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: 'primary' | 'secondary' | 'inverse'
   size?: 'compact' | 'default'
   disabled?: boolean

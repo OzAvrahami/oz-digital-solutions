@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 
-export interface SectionHeadingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+interface SectionHeadingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   kicker: string
   title: ReactNode
   description?: ReactNode

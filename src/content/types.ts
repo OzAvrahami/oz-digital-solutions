@@ -14,9 +14,9 @@ export type ProjectId = 'financeTracker' | 'tradingJournal' | 'lifeOs' | 'tradeG
 export type ProcessKey = 'understand' | 'define' | 'build' | 'launch'
 export type WhyKey = 'direct' | 'productThinking' | 'workflowFit' | 'endToEnd'
 export type PrincipleKey = 'productThinking' | 'businessSystems' | 'technologyAndBusiness' | 'directCollaboration'
-export type SocialKey = 'email' | 'linkedIn' | 'github'
+type SocialKey = 'email' | 'linkedIn' | 'github'
 
-export interface NumberedContentItem {
+interface NumberedContentItem {
   number: string
   title: string
   description: string

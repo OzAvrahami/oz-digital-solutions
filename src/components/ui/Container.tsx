@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 
-export type ContainerProps = HTMLAttributes<HTMLDivElement>
+type ContainerProps = HTMLAttributes<HTMLDivElement>
 
 export default function Container({ className = '', ...props }: ContainerProps) {
   return (

@@ -1,11 +1,11 @@
 import type { ProjectId } from '@/content'
 
-export interface ProjectLinkConfig {
+interface ProjectLinkConfig {
   liveUrl: string | null
   repositoryUrl: string | null
 }
 
-export interface SiteConfig {
+interface SiteConfig {
   productionSiteUrl: string
   email: string | null
   linkedInUrl: string | null

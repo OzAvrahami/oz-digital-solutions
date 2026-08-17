@@ -6,7 +6,7 @@ import { useSyncExternalStore } from 'react'
 import type { SiteDictionary } from '@/content'
 import type { Locale } from '@/lib/i18n'
 
-export interface LanguageSwitcherProps {
+interface LanguageSwitcherProps {
   locale: Locale
   labels: SiteDictionary['header']
   longEnglishLabel?: boolean
