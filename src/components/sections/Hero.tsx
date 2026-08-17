@@ -39,7 +39,7 @@ export default function Hero({ locale, dictionary }: HeroProps) {
             <ButtonLink href="#" disabled title={unavailableLabel} className="w-full desktop:w-auto">
               {hero.primaryCta}
             </ButtonLink>
-            <ButtonLink href="#" variant="secondary" disabled title={unavailableLabel} className="w-full desktop:w-auto">
+            <ButtonLink href={`/${locale}#work`} variant="secondary" className="w-full desktop:w-auto">
               {hero.secondaryCta}
               <span className="text-text-secondary" aria-hidden="true">{locale === 'he' ? '←' : '→'}</span>
             </ButtonLink>
