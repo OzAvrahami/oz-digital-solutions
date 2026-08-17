@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0a0b0e; color: #f4f5f8; font-family: "Heebo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #4d7dff; text-decoration: none; }
+  a:hover { color: #7f9dff; }
+  input, textarea { font-family: inherit; }
+  ::placeholder { color: #6a6f78; opacity: 1; }
+  @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes floaty2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+
+  @media (max-width: 820px) {
+    [data-hd] { padding: 16px 20px !important; }
+    [data-desk-nav] { display: none !important; }
+    [data-hd-cta] { display: none !important; }
+    [data-burger] { display: inline-flex !important; }
+
+    [data-pad] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-pady] { padding-top: 72px !important; padding-bottom: 72px !important; }
+    [data-h1] { font-size: 40px !important; }
+    [data-h2] { font-size: 30px !important; line-height: 1.18 !important; }
+    [data-h2-lg] { font-size: 36px !important; }
+
+    [data-hero-wrap] { grid-template-columns: 1fr !important; gap: 34px !important; padding: 84px 20px 40px !important; }
+    [data-hero-ctas] { flex-direction: column !important; align-items: stretch !important; }
+    [data-hero-ctas] a { justify-content: center !important; }
+    [data-hero-visual] { height: auto !important; }
+    [data-hero-dash] { position: static !important; width: 100% !important; }
+    [data-hero-phone] { bottom: 0 !important; inset-inline-start: 4px !important; top: auto !important; }
+    [data-hero-chip] { top: 12px !important; inset-inline-end: 10px !important; inset-inline-start: auto !important; bottom: auto !important; }
+
+    [data-svc-row] { grid-template-columns: auto 1fr !important; gap: 4px 14px !important; padding: 26px 4px !important; }
+    [data-svc-desc] { grid-column: 1 / -1 !important; margin-top: 8px !important; }
+    [data-svc-arrow] { display: none !important; }
+
+    #work article > div { padding-left: 18px !important; padding-right: 18px !important; }
+    [data-fin-art] { grid-template-columns: 1fr !important; }
+    [data-fin-dash] { grid-template-columns: 1fr !important; }
+    [data-fin-side] { display: none !important; }
+    [data-trd-kpi] { grid-template-columns: 1fr 1fr !important; }
+    [data-trd-charts] { grid-template-columns: 1fr !important; }
+    [data-work-pair] { grid-template-columns: 1fr !important; }
+    [data-life-vis] { position: static !important; display: flex !important; align-items: flex-end; justify-content: center; height: auto !important; margin-top: 8px !important; padding-bottom: 8px; -webkit-mask-image: none !important; mask-image: none !important; overflow: visible !important; }
+    [data-life-pa] { position: static !important; inset: auto !important; width: 150px !important; z-index: 2; }
+    [data-life-pb] { position: static !important; inset: auto !important; width: 136px !important; margin-inline-start: -44px; margin-bottom: 18px; }
+
+    [data-proc-rail] { padding-inline-start: 30px !important; }
+    [data-proc-item] { grid-template-columns: 54px 1fr !important; gap: 16px !important; }
+    [data-proc-item]::before { inset-inline-start: -37px !important; }
+    [data-proc-n] { font-size: 26px !important; }
+
+    [data-why-grid] { grid-template-columns: 1fr !important; gap: 34px !important; }
+    [data-about-grid] { grid-template-columns: 1fr !important; gap: 30px !important; }
+    [data-about-portrait] { max-width: 320px; margin-inline: auto; }
+    [data-about-principles] { gap: 12px !important; }
+
+    [data-close-sec] { padding: 72px 20px !important; }
+    [data-close-box] { padding: 44px 22px !important; }
+
+    [data-foot] { grid-template-columns: 1fr !important; gap: 32px !important; padding: 56px 22px 32px !important; }
+    [data-foot-bottom] { padding: 20px 22px !important; }
+    [data-fin-kpi] { grid-template-columns: 1fr 1fr !important; }
+    [data-fin-kpi-wide] { grid-column: 1 / -1 !important; }
+  }
+  @media (max-width: 400px) {
+    [data-about-principles] { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 821px) {
+    [data-mmenu] { display: none !important; }
+  }
+</style>
+</helmet>
+
+<div dir="{{ dir }}" lang="{{ lang }}" style="min-height: 100vh;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position: sticky; top: 0; z-index: 60; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(10,11,14,0.72); border-bottom: 1px solid rgba(255,255,255,0.06);">
+    <div data-hd style="max-width: 1200px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#top" style="display: flex; align-items: center; gap: 11px; color: #f4f5f8;" style-focus="outline: 2px solid #4d7dff; outline-offset: 4px; border-radius: 6px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4d7dff; box-shadow: 0 0 16px rgba(77,125,255,0.7);"></span>
+        <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em;">{{ brandName }}</span>
+      </a>
+      <nav data-desk-nav style="display: flex; align-items: center; gap: 32px; font-size: 15px; color: #9aa0aa; font-weight: 500;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+          <a href="{{ item.h }}" style="color: #9aa0aa;" style-hover="color: #f4f5f8;" style-focus="outline: 2px solid #4d7dff; outline-offset: 4px; border-radius: 4px; color: #f4f5f8;">{{ item.l }}</a>
+        </sc-for>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div role="group" aria-label="Language" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-family: 'IBM Plex Mono', monospace;">
+          <span role="button" tabindex="0" onClick="{{ setHe }}" onKeyDown="{{ onHeKey }}" style="cursor: pointer; color: {{ heColor }}; font-weight: {{ heWeight }};" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px; border-radius: 4px;">עברית</span>
+          <span style="color: #3a3e46;">/</span>
+          <span role="button" tabindex="0" onClick="{{ setEn }}" onKeyDown="{{ onEnKey }}" style="cursor: pointer; color: {{ enColor }}; font-weight: {{ enWeight }};" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px; border-radius: 4px;">EN</span>
+        </div>
+        <a data-hd-cta href="#contact" style="padding: 11px 22px; border-radius: 10px; background: #f4f5f8; color: #0a0b0e; font-size: 15px; font-weight: 600;" style-hover="background: #ffffff;" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px;">{{ headerCta }}</a>
+        <button data-burger onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" aria-controls="mobile-menu" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; cursor: pointer; padding: 0;"><span style="display: block; width: 18px; height: 2px; background: #f4f5f8; box-shadow: 0 -6px 0 #f4f5f8, 0 6px 0 #f4f5f8;"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div data-mmenu id="mobile-menu" style="position: fixed; inset: 0; z-index: 70; display: {{ menuDisplay }}; flex-direction: column; background: rgba(8,9,11,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 20px 22px 40px;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 11px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4d7dff; box-shadow: 0 0 16px rgba(77,125,255,0.7);"></span>
+        <span style="font-size: 18px; font-weight: 700;">{{ brandName }}</span>
+      </div>
+      <button onClick="{{ closeMenu }}" aria-label="{{ closeMenuLabel }}" style="width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; color: #f4f5f8; font-size: 20px; cursor: pointer;">✕</button>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 2px; margin-top: 36px;">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.h }}" onClick="{{ closeMenu }}" style="font-size: 26px; font-weight: 700; color: #f4f5f8; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">{{ item.l }}</a>
+      </sc-for>
+    </nav>
+    <a href="#contact" onClick="{{ closeMenu }}" style="margin-top: 28px; display: flex; align-items: center; justify-content: center; padding: 17px; border-radius: 12px; background: #4d7dff; color: #fff; font-size: 17px; font-weight: 600;">{{ ctaPrimary }}</a>
+    <div role="group" aria-label="Language" style="display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 16px; font-family: 'IBM Plex Mono', monospace;">
+      <span role="button" tabindex="0" onClick="{{ setHe }}" onKeyDown="{{ onHeKey }}" style="cursor: pointer; color: {{ heColor }}; font-weight: {{ heWeight }};">עברית</span>
+      <span style="color: #3a3e46;">/</span>
+      <span role="button" tabindex="0" onClick="{{ setEn }}" onKeyDown="{{ onEnKey }}" style="cursor: pointer; color: {{ enColor }}; font-weight: {{ enWeight }};">English</span>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 72px 72px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%); pointer-events: none;"></div>
+    <div style="position: absolute; top: -80px; inset-inline-start: -60px; width: 620px; height: 520px; background: radial-gradient(circle at 30% 30%, rgba(77,125,255,0.14), transparent 62%); pointer-events: none;"></div>
+
+    <div data-hero-wrap style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 40px 72px; display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 56px; align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 9px; padding: 7px 14px; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; margin-bottom: 30px; background: rgba(255,255,255,0.02);">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #46d19e; box-shadow: 0 0 10px rgba(70,209,158,0.8);"></span>
+          <span style="font-size: 13.5px; color: #c4c9d2; font-weight: 500;">{{ availability }}</span>
+        </div>
+        <h1 data-h1 style="margin: 0; font-size: 68px; line-height: 1.05; font-weight: 900; letter-spacing: -0.015em; color: #f7f8fa;">{{ heroPre }}<br><span style="color: #4d7dff;">{{ heroAccent }}</span></h1>
+        <p style="margin: 28px 0 0; max-width: 520px; font-size: 19px; line-height: 1.6; color: #9aa0aa;">{{ heroSub }}</p>
+        <div data-hero-ctas style="display: flex; align-items: center; gap: 14px; margin-top: 36px; flex-wrap: wrap;">
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 12px; background: #4d7dff; color: #fff; font-size: 16px; font-weight: 600; box-shadow: 0 14px 44px -14px rgba(77,125,255,0.75);" style-hover="background: #5b88ff;" style-focus="outline: 2px solid #7f9dff; outline-offset: 3px;">{{ ctaPrimary }}</a>
+          <a href="#work" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); color: #f4f5f8; font-size: 16px; font-weight: 500;" style-hover="border-color: rgba(255,255,255,0.3);" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px;">{{ ctaSecondary }} <span style="color: #9aa0aa;">{{ arrow }}</span></a>
+        </div>
+        <div style="display: flex; gap: 40px; margin-top: 46px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07);">
+          <div><div style="font-size: 23px; font-weight: 800; letter-spacing: -0.01em;">{{ stat1v }}</div><div style="font-size: 13.5px; color: #8a909a; margin-top: 5px;">{{ stat1l }}</div></div>
+          <div><div style="font-size: 23px; font-weight: 800; letter-spacing: -0.01em;">{{ stat2v }}</div><div style="font-size: 13.5px; color: #8a909a; margin-top: 5px;">{{ stat2l }}</div></div>
+        </div>
+      </div>
+
+      <!-- Product composition -->
+      <div data-hero-visual style="position: relative; height: 460px;">
+        <div data-hero-dash style="position: absolute; top: 8px; inset-inline-end: 0; width: 448px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); background: #0e1014; overflow: hidden; box-shadow: 0 44px 100px -34px rgba(0,0,0,0.9); animation: floaty 8s ease-in-out infinite;">
+          <div dir="ltr" style="display: flex; align-items: center; gap: 7px; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); background: #0b0c0f;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #ff5f57;"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #febc2e;"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #28c840;"></span>
+            <span style="margin: 0 auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6a6f78;">finance-tracker</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #7f9dff; padding: 2px 7px; border: 1px solid rgba(77,125,255,0.3); border-radius: 5px;">{{ ui.sample }}</span>
+          </div>
+          <div dir="{{ dir }}" style="padding: 18px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+              <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; background: #101319;"><div style="font-size: 11.5px; color: #8a909a;">{{ ui.finTotalAssets }}</div><div style="font-size: 21px; font-weight: 800; margin-top: 5px;">₪ 250,000</div><div style="font-size: 11px; color: #46d19e; margin-top: 4px;">+4%</div></div>
+              <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; background: #101319;"><div style="font-size: 11.5px; color: #8a909a;">{{ ui.finIncome }}</div><div style="font-size: 21px; font-weight: 800; margin-top: 5px;">₪ 40,000</div><div style="font-size: 11px; color: #46d19e; margin-top: 4px;">+6%</div></div>
+            </div>
+            <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 16px; background: #101319;">
+              <div style="font-size: 12px; color: #8a909a; margin-bottom: 14px;">{{ ui.finMonthly }}</div>
+              <div dir="ltr" style="display: flex; align-items: flex-end; gap: 8px; height: 82px;">
+                <div style="flex:1; height: 42%; background: #2a3350; border-radius: 4px;"></div><div style="flex:1; height: 60%; background: #33436e; border-radius: 4px;"></div><div style="flex:1; height: 50%; background: #2a3350; border-radius: 4px;"></div><div style="flex:1; height: 76%; background: #4d7dff; border-radius: 4px;"></div><div style="flex:1; height: 66%; background: #3a5299; border-radius: 4px;"></div><div style="flex:1; height: 90%; background: #5b88ff; border-radius: 4px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hero-phone style="position: absolute; bottom: 0; inset-inline-start: 6px; width: 152px; border-radius: 26px; border: 1px solid rgba(255,255,255,0.12); background: #0d0f13; padding: 8px; box-shadow: 0 40px 80px -24px rgba(0,0,0,0.95); animation: floaty2 6.5s ease-in-out infinite;">
+          <div dir="{{ dir }}" style="border-radius: 20px; overflow: hidden; background: #0a0b0e;">
+            <div dir="ltr" style="display: flex; justify-content: space-between; align-items: center; padding: 9px 14px 4px; font-size: 10px; color: #8a909a; font-family: 'IBM Plex Mono', monospace;"><span>9:41</span><span>LifeOS</span></div>
+            <div style="padding: 8px 12px 14px;">
+              <div style="font-size: 15px; font-weight: 800; margin-bottom: 10px;">{{ ui.today }}</div>
+              <div style="display: flex; flex-direction: column; gap: 7px;">
+                <div style="display: flex; align-items: center; gap: 8px; padding: 9px; border-radius: 9px; background: rgba(77,125,255,0.12); border: 1px solid rgba(77,125,255,0.25);"><span style="width: 14px; height: 14px; border-radius: 4px; border: 2px solid #4d7dff;"></span><span style="font-size: 11px; color: #cdd8ff;">{{ ui.taskClientCall }}</span></div>
+                <div style="display: flex; align-items: center; gap: 8px; padding: 9px; border-radius: 9px; background: #101319; border: 1px solid rgba(255,255,255,0.06);"><span style="width: 14px; height: 14px; border-radius: 4px; border: 2px solid #3a3e46;"></span><span style="font-size: 11px; color: #b4bac4;">{{ ui.taskWeekly }}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hero-chip dir="ltr" style="position: absolute; bottom: 118px; inset-inline-start: 24px; display: flex; align-items: center; gap: 9px; padding: 11px 14px; border-radius: 12px; background: #101319; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px -16px rgba(0,0,0,0.8); animation: floaty 5.5s ease-in-out infinite;">
+          <span style="width: 28px; height: 28px; border-radius: 8px; background: rgba(70,209,158,0.15); display: inline-flex; align-items: center; justify-content: center; color: #46d19e; font-size: 14px;">⚡</span>
+          <div style="display: flex; align-items: center; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #b4bac4;"><span>Form</span><span style="color: #46d19e;">→</span><span>CRM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capability marquee -->
+    <div style="position: relative; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);">
+      <div dir="ltr" style="display: flex; gap: 12px; width: max-content; animation: marq 34s linear infinite;">
+        <div style="display: flex; gap: 12px;">
+          <sc-for list="{{ cap }}" as="c" hint-placeholder-count="7"><span style="padding: 7px 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; font-size: 13.5px; color: #9aa0aa; white-space: nowrap;">{{ c }}</span></sc-for>
+        </div>
+        <div style="display: flex; gap: 12px;" aria-hidden="true">
+          <sc-for list="{{ cap }}" as="c" hint-placeholder-count="7"><span style="padding: 7px 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; font-size: 13.5px; color: #9aa0aa; white-space: nowrap;">{{ c }}</span></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" data-pad data-pady style="max-width: 1200px; margin: 0 auto; padding: 120px 40px;">
+    <div style="max-width: 720px; margin-bottom: 56px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 18px;">// {{ servicesKicker }}</div>
+      <h2 data-h2 style="margin: 0; font-size: 46px; line-height: 1.14; font-weight: 800; letter-spacing: -0.01em;">{{ servicesTitle }}</h2>
+      <p style="margin: 20px 0 0; font-size: 18px; line-height: 1.6; color: #9aa0aa;">{{ servicesSub }}</p>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.09);">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <div data-svc-row style="display: grid; grid-template-columns: 80px 320px 1fr 40px; align-items: start; gap: 40px; padding: 32px 8px; border-bottom: 1px solid rgba(255,255,255,0.09); transition: background 0.2s;" style-hover="background: rgba(255,255,255,0.022);">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #4d7dff;">{{ s.n }}</span>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 700;">{{ s.title }}</h3>
+          <p data-svc-desc style="margin: 0; font-size: 16px; line-height: 1.6; color: #9aa0aa;">{{ s.desc }}</p>
+          <span data-svc-arrow style="font-size: 22px; color: #6a6f78; justify-self: start;">{{ arrow }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section id="work" style="position: relative; border-top: 1px solid rgba(255,255,255,0.05); background: #08090b;">
+    <div data-pad data-pady style="max-width: 1200px; margin: 0 auto; padding: 120px 40px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 20px; flex-wrap: wrap;">
+        <div style="max-width: 620px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 18px;">// {{ workKicker }}</div>
+          <h2 data-h2 style="margin: 0; font-size: 46px; line-height: 1.12; font-weight: 800; letter-spacing: -0.01em;">{{ workTitle }}</h2>
+          <p style="margin: 20px 0 0; font-size: 18px; line-height: 1.6; color: #9aa0aa;">{{ workSub }}</p>
+        </div>
+        <p style="margin: 0; max-width: 300px; font-size: 16px; line-height: 1.55; color: #c4c9d2; font-weight: 500; border-inline-start: 2px solid #4d7dff; padding-inline-start: 16px;">{{ workLead }}</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 44px;">
+
+        <!-- Project 1 · Finance Tracker -->
+        <article data-project="finance-tracker" data-fin-art style="border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; background: linear-gradient(160deg,#101319,#0b0d11); overflow: hidden; display: grid; grid-template-columns: 0.82fr 1.18fr;" style-hover="border-color: rgba(77,125,255,0.32);">
+          <div style="padding: 44px 40px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #4d7dff; letter-spacing: 0.08em;">01</span>
+              <span style="font-size: 13px; color: #8a909a;">{{ pFinCat }}</span>
+            </div>
+            <h3 style="margin: 0 0 14px; font-size: 30px; font-weight: 800; letter-spacing: -0.01em;">{{ pFinTitle }}</h3>
+            <p style="margin: 0 0 22px; font-size: 16px; line-height: 1.65; color: #9aa0aa;">{{ pFinDesc }}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ pFinTags }}" as="t" hint-placeholder-count="5"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #b4bac4; padding: 5px 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;">{{ t }}</span></sc-for>
+            </div>
+          </div>
+          <div style="padding: 36px 36px 0; display: flex; align-items: flex-end;">
+            <div style="width: 100%; border-radius: 12px 12px 0 0; border: 1px solid rgba(255,255,255,0.09); border-bottom: none; background: #0a0b0e; overflow: hidden; box-shadow: 0 -20px 60px -30px rgba(0,0,0,0.9);">
+              <div dir="ltr" style="display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06);"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #28c840;"></span><span style="margin-inline-start: auto; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #7f9dff; padding: 2px 7px; border: 1px solid rgba(77,125,255,0.3); border-radius: 5px;">{{ ui.sample }}</span></div>
+              <div dir="{{ dir }}" data-fin-dash style="display: grid; grid-template-columns: 150px 1fr;">
+                <div data-fin-side style="border-inline-start: 1px solid rgba(255,255,255,0.06); padding: 16px 14px; background: #0b0c10;">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 18px;"><span style="width: 22px; height: 22px; border-radius: 6px; background: #4d7dff;"></span><span style="font-weight: 700; font-size: 13px;">Finance</span></div>
+                  <div style="display: flex; flex-direction: column; gap: 3px; font-size: 12.5px;">
+                    <div style="padding: 8px 10px; border-radius: 7px; background: rgba(77,125,255,0.14); color: #cdd8ff;">{{ ui.navOverview }}</div>
+                    <div style="padding: 8px 10px; color: #8a909a;">{{ ui.navTransactions }}</div>
+                    <div style="padding: 8px 10px; color: #8a909a;">{{ ui.navInvestments }}</div>
+                    <div style="padding: 8px 10px; color: #8a909a;">{{ ui.navLoans }}</div>
+                    <div style="padding: 8px 10px; color: #8a909a;">{{ ui.navReports }}</div>
+                  </div>
+                </div>
+                <div style="padding: 18px;">
+                  <div data-fin-kpi style="display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px;">
+                    <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 12px; background: #101319;"><div style="font-size: 10.5px; color: #8a909a;">{{ ui.finPortfolio }}</div><div style="font-size: 17px; font-weight: 800; margin-top: 4px;">₪ 180,000</div></div>
+                    <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 12px; background: #101319;"><div style="font-size: 10.5px; color: #8a909a;">{{ ui.finCashflow }}</div><div style="font-size: 17px; font-weight: 800; margin-top: 4px; color: #46d19e;">+₪ 12,000</div></div>
+                    <div data-fin-kpi-wide style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 12px; background: #101319;"><div style="font-size: 10.5px; color: #8a909a;">{{ ui.finLiabilities }}</div><div style="font-size: 17px; font-weight: 800; margin-top: 4px;">₪ 60,000</div></div>
+                  </div>
+                  <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 14px; background: #101319; margin-bottom: 12px;">
+                    <div dir="ltr" style="display: flex; align-items: flex-end; gap: 7px; height: 74px;">
+                      <div style="flex:1; height: 40%; background: #2a3350; border-radius: 3px;"></div><div style="flex:1; height: 58%; background: #33436e; border-radius: 3px;"></div><div style="flex:1; height: 46%; background: #2a3350; border-radius: 3px;"></div><div style="flex:1; height: 70%; background: #4d7dff; border-radius: 3px;"></div><div style="flex:1; height: 60%; background: #3a5299; border-radius: 3px;"></div><div style="flex:1; height: 84%; background: #4d7dff; border-radius: 3px;"></div><div style="flex:1; height: 72%; background: #5b88ff; border-radius: 3px;"></div><div style="flex:1; height: 92%; background: #5b88ff; border-radius: 3px;"></div>
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: 7px; background: #101319; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.finIncomeRow }}</span><span style="color: #46d19e;">+₪ 12,000</span></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: 7px; background: #101319; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.finExpenseRow }}</span><span style="color: #ff8f6b;">−₪ 3,200</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 · Trading Journal -->
+        <article data-project="trading-journal" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; background: linear-gradient(160deg,#101319,#0b0d11); overflow: hidden;" style-hover="border-color: rgba(77,125,255,0.32);">
+          <div style="padding: 40px 40px 0;">
+            <div style="max-width: 560px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #4d7dff; letter-spacing: 0.08em;">02</span>
+                <span style="font-size: 13px; color: #8a909a;">{{ pTrdCat }}</span>
+              </div>
+              <h3 style="margin: 0 0 12px; font-size: 30px; font-weight: 800; letter-spacing: -0.01em;">{{ pTrdTitle }}</h3>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.65; color: #9aa0aa;">{{ pTrdDesc }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ pTrdTags }}" as="t" hint-placeholder-count="5"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #b4bac4; padding: 5px 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;">{{ t }}</span></sc-for>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 32px 40px 40px;">
+            <div style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.09); background: #0a0b0e; overflow: hidden;">
+              <div dir="ltr" style="display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06);"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #28c840;"></span><span style="margin: 0 auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6a6f78;">trading-journal</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #7f9dff; padding: 2px 7px; border: 1px solid rgba(77,125,255,0.3); border-radius: 5px;">{{ ui.sample }}</span></div>
+              <div dir="{{ dir }}" data-trd-kpi style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 13px; background: #101319;"><div style="font-size: 11px; color: #8a909a;">{{ ui.trdWinRate }}</div><div style="font-size: 20px; font-weight: 800; margin-top: 5px;">62%</div></div>
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 13px; background: #101319;"><div style="font-size: 11px; color: #8a909a;">{{ ui.trdProfitFactor }}</div><div style="font-size: 20px; font-weight: 800; margin-top: 5px;">1.8</div></div>
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 13px; background: #101319;"><div style="font-size: 11px; color: #8a909a;">{{ ui.trdTotalTrades }}</div><div style="font-size: 20px; font-weight: 800; margin-top: 5px;">240</div></div>
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 13px; background: #101319;"><div style="font-size: 11px; color: #8a909a;">{{ ui.trdCumulative }}</div><div style="font-size: 20px; font-weight: 800; margin-top: 5px; color: #46d19e;">+14%</div></div>
+              </div>
+              <div dir="{{ dir }}" data-trd-charts style="padding: 0 20px 20px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px;">
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 16px; background: #101319;">
+                  <div style="font-size: 11.5px; color: #8a909a; margin-bottom: 14px;">{{ ui.trdEquity }}</div>
+                  <div dir="ltr" style="position: relative; height: 120px;">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between;"><div style="border-top: 1px solid rgba(255,255,255,0.04);"></div><div style="border-top: 1px solid rgba(255,255,255,0.04);"></div><div style="border-top: 1px solid rgba(255,255,255,0.04);"></div><div style="border-top: 1px solid rgba(255,255,255,0.04);"></div></div>
+                    <div style="position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 5px;">
+                      <div style="flex:1; height: 22%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 34%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 30%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 46%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 40%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 58%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 52%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.85;"></div><div style="flex:1; height: 70%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.9;"></div><div style="flex:1; height: 64%; background: linear-gradient(#4d7dff,#3a63d4); border-radius: 2px; opacity: 0.9;"></div><div style="flex:1; height: 82%; background: linear-gradient(#5b88ff,#4d7dff); border-radius: 2px;"></div><div style="flex:1; height: 76%; background: linear-gradient(#5b88ff,#4d7dff); border-radius: 2px;"></div><div style="flex:1; height: 96%; background: linear-gradient(#5b88ff,#4d7dff); border-radius: 2px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 14px; background: #101319;">
+                  <div style="font-size: 11.5px; color: #8a909a; margin-bottom: 12px;">{{ ui.trdRecent }}</div>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.assetA }} · {{ ui.long }}</span><span style="color: #46d19e;">+2.1%</span></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.assetB }} · {{ ui.short }}</span><span style="color: #ff8f6b;">−0.8%</span></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.assetC }} · {{ ui.long }}</span><span style="color: #46d19e;">+3.4%</span></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;"><span style="color: #c4c9d2;">{{ ui.assetD }} · {{ ui.long }}</span><span style="color: #46d19e;">+0.6%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Row: Project 3 (mobile) + Project 4 (desktop app) -->
+        <div data-work-pair style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+          <!-- Project 3 · LifeOS -->
+          <article data-project="lifeos" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; background: linear-gradient(160deg,#101319,#0b0d11); overflow: hidden; display: flex; flex-direction: column;" style-hover="border-color: rgba(77,125,255,0.32);">
+            <div style="padding: 40px 40px 0;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #4d7dff; letter-spacing: 0.08em;">03</span>
+                <span style="font-size: 13px; color: #8a909a;">{{ pLifeCat }}</span>
+              </div>
+              <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.01em;">{{ pLifeTitle }}</h3>
+              <p style="margin: 0 0 18px; font-size: 15.5px; line-height: 1.65; color: #9aa0aa;">{{ pLifeDesc }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ pLifeTags }}" as="t" hint-placeholder-count="5"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #b4bac4; padding: 5px 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;">{{ t }}</span></sc-for>
+              </div>
+            </div>
+            <div data-life-vis style="position: relative; height: 300px; margin-top: 24px; overflow: hidden; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent);">
+              <div data-life-pa style="position: absolute; bottom: -30px; inset-inline-end: 40px; width: 158px; border-radius: 26px; border: 1px solid rgba(255,255,255,0.12); background: #0d0f13; padding: 7px; box-shadow: 0 30px 70px -24px rgba(0,0,0,0.9); z-index: 2;">
+                <div dir="{{ dir }}" style="border-radius: 20px; overflow: hidden; background: #0a0b0e;">
+                  <div dir="ltr" style="display: flex; justify-content: space-between; padding: 8px 12px 4px; font-size: 9px; color: #8a909a; font-family: 'IBM Plex Mono', monospace;"><span>9:41</span><span>LifeOS</span></div>
+                  <div style="padding: 6px 11px 14px;">
+                    <div style="font-size: 14px; font-weight: 800; margin-bottom: 9px;">{{ ui.today }}</div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <div style="display: flex; align-items: center; gap: 7px; padding: 8px; border-radius: 8px; background: rgba(77,125,255,0.12); border: 1px solid rgba(77,125,255,0.25);"><span style="width: 12px; height: 12px; border-radius: 4px; background: #4d7dff;"></span><span style="font-size: 10px; color: #cdd8ff;">{{ ui.taskScoping }}</span></div>
+                      <div style="display: flex; align-items: center; gap: 7px; padding: 8px; border-radius: 8px; background: #101319; border: 1px solid rgba(255,255,255,0.06);"><span style="width: 12px; height: 12px; border-radius: 4px; border: 2px solid #3a3e46;"></span><span style="font-size: 10px; color: #b4bac4;">{{ ui.taskDoc }}</span></div>
+                      <div style="display: flex; align-items: center; gap: 7px; padding: 8px; border-radius: 8px; background: #101319; border: 1px solid rgba(255,255,255,0.06);"><span style="width: 12px; height: 12px; border-radius: 4px; border: 2px solid #3a3e46;"></span><span style="font-size: 10px; color: #b4bac4;">{{ ui.taskReview }}</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-life-pb style="position: absolute; bottom: -14px; inset-inline-start: 44px; width: 150px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); background: #0d0f13; padding: 7px; box-shadow: 0 30px 70px -24px rgba(0,0,0,0.9); opacity: 0.96;">
+                <div dir="{{ dir }}" style="border-radius: 18px; overflow: hidden; background: #0a0b0e;">
+                  <div dir="ltr" style="display: flex; justify-content: space-between; padding: 8px 12px 4px; font-size: 9px; color: #8a909a; font-family: 'IBM Plex Mono', monospace;"><span>9:41</span><span>LifeOS</span></div>
+                  <div style="padding: 6px 11px 14px;">
+                    <div style="font-size: 14px; font-weight: 800; margin-bottom: 9px;">{{ ui.weeklyPlan }}</div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                      <div style="display: flex; justify-content: space-between; padding: 7px 8px; border-radius: 7px; background: #101319; font-size: 10px; color: #b4bac4;"><span>{{ ui.sun }}</span><span style="color: #4d7dff;">4</span></div>
+                      <div style="display: flex; justify-content: space-between; padding: 7px 8px; border-radius: 7px; background: #101319; font-size: 10px; color: #b4bac4;"><span>{{ ui.mon }}</span><span style="color: #4d7dff;">6</span></div>
+                      <div style="display: flex; justify-content: space-between; padding: 7px 8px; border-radius: 7px; background: rgba(77,125,255,0.1); font-size: 10px; color: #cdd8ff;"><span>{{ ui.tue }}</span><span>3</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 · TradeGuard -->
+          <article data-project="tradeguard" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; background: linear-gradient(160deg,#101319,#0b0d11); overflow: hidden; display: flex; flex-direction: column;" style-hover="border-color: rgba(77,125,255,0.32);">
+            <div style="padding: 40px 40px 0;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #4d7dff; letter-spacing: 0.08em;">04</span>
+                <span style="font-size: 13px; color: #8a909a;">{{ pGuardCat }}</span>
+              </div>
+              <h3 style="margin: 0 0 12px; font-size: 28px; font-weight: 800; letter-spacing: -0.01em;">{{ pGuardTitle }}</h3>
+              <p style="margin: 0 0 18px; font-size: 15.5px; line-height: 1.65; color: #9aa0aa;">{{ pGuardDesc }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ pGuardTags }}" as="t" hint-placeholder-count="5"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #b4bac4; padding: 5px 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;">{{ t }}</span></sc-for>
+              </div>
+            </div>
+            <div style="padding: 24px 40px 0; margin-top: auto;">
+              <div style="border-radius: 12px 12px 0 0; border: 1px solid rgba(255,255,255,0.09); border-bottom: none; background: #0a0b0e; overflow: hidden;">
+                <div dir="ltr" style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); background: #0b0c0f;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #28c840;"></span><span style="margin: 0 auto; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6a6f78;">TradeGuard</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #7f9dff; padding: 2px 7px; border: 1px solid rgba(77,125,255,0.3); border-radius: 5px;">{{ ui.sample }}</span></div>
+                <div dir="{{ dir }}" style="padding: 16px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                    <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 50%; background: #46d19e; box-shadow: 0 0 8px rgba(70,209,158,0.7);"></span><span style="font-size: 13px; font-weight: 600;">{{ ui.tgProtection }}</span></div>
+                    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6a6f78;">{{ ui.tgConnected }}</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 13px; border-radius: 9px; background: #101319; border: 1px solid rgba(255,255,255,0.06);"><span style="font-size: 12.5px; color: #c4c9d2;">{{ ui.tgMaxLoss }}</span><span style="font-size: 11px; color: #9aa0aa; padding: 3px 9px; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px;">{{ ui.tgSet }}</span></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 13px; border-radius: 9px; background: #101319; border: 1px solid rgba(255,255,255,0.06);"><span style="font-size: 12.5px; color: #c4c9d2;">{{ ui.tgMaxTrades }}</span><span style="font-size: 11px; color: #9aa0aa; padding: 3px 9px; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px;">{{ ui.tgSet }}</span></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 13px; border-radius: 9px; background: rgba(70,209,158,0.08); border: 1px solid rgba(70,209,158,0.22);"><span style="font-size: 12.5px; color: #b7ebd6;">{{ ui.tgAutoEnforce }}</span><span style="font-size: 11.5px; color: #46d19e; font-weight: 600;">{{ ui.tgActive }}</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process" data-pad data-pady style="max-width: 1200px; margin: 0 auto; padding: 120px 40px;">
+    <div style="max-width: 640px; margin-bottom: 60px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 18px;">// {{ processKicker }}</div>
+      <h2 data-h2 style="margin: 0; font-size: 46px; line-height: 1.14; font-weight: 800; letter-spacing: -0.01em;">{{ processTitle }}</h2>
+      <p style="margin: 20px 0 0; font-size: 18px; line-height: 1.6; color: #9aa0aa;">{{ processSub }}</p>
+    </div>
+    <div data-proc-rail style="border-inline-start: 2px solid rgba(255,255,255,0.09); padding-inline-start: 44px; max-width: 860px;">
+      <sc-for list="{{ process }}" as="p" hint-placeholder-count="4">
+        <div data-proc-item style="position: relative; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 84px 1fr; gap: 28px; align-items: baseline;" style-before='content: ""; position: absolute; inset-inline-start: -53px; top: 40px; width: 14px; height: 14px; border-radius: 50%; background: #4d7dff; box-shadow: 0 0 0 5px #0a0b0e, 0 0 16px rgba(77,125,255,0.6);'>
+          <span data-proc-n style="font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 500; color: #2f3646;">{{ p.n }}</span>
+          <div>
+            <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700;">{{ p.name }}</h3>
+            <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #9aa0aa; max-width: 560px;">{{ p.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ WHY WORK WITH ME ============ -->
+  <section style="border-top: 1px solid rgba(255,255,255,0.05); background: #08090b;">
+    <div data-pad data-pady data-why-grid style="max-width: 1200px; margin: 0 auto; padding: 120px 40px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start;">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 20px;">// {{ whyKicker }}</div>
+        <h2 data-h2-lg style="margin: 0; font-size: 54px; line-height: 1.06; font-weight: 900; letter-spacing: -0.02em;">{{ whyTitleA }}<br><span style="color: #4d7dff;">{{ whyTitleB }}</span></h2>
+        <p style="margin: 26px 0 0; max-width: 400px; font-size: 18px; line-height: 1.6; color: #9aa0aa;">{{ whySub }}</p>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.09);">
+        <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 56px 1fr; gap: 24px; align-items: baseline; padding: 26px 4px; border-bottom: 1px solid rgba(255,255,255,0.09);">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff;">0{{ w.i }}</span>
+            <p style="margin: 0; font-size: 22px; line-height: 1.4; font-weight: 600; color: #eef0f3;">{{ w.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECHNOLOGY ============ -->
+  <section data-pad data-pady style="max-width: 1200px; margin: 0 auto; padding: 116px 40px; text-align: center;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 18px;">// {{ techKicker }}</div>
+    <h2 data-h2 style="margin: 0 auto; max-width: 640px; font-size: 42px; line-height: 1.14; font-weight: 800; letter-spacing: -0.01em;">{{ techTitle }}</h2>
+    <p style="margin: 20px auto 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: #9aa0aa;">{{ techSub }}</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 44px; max-width: 820px; margin-inline: auto;">
+      <sc-for list="{{ tech }}" as="t" hint-placeholder-count="13"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #c4c9d2; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; background: rgba(255,255,255,0.02);" style-hover="border-color: rgba(77,125,255,0.4); color: #f4f5f8;">{{ t }}</span></sc-for>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" style="border-top: 1px solid rgba(255,255,255,0.05); background: #08090b;">
+    <div data-pad data-pady data-about-grid style="max-width: 1200px; margin: 0 auto; padding: 120px 40px; display: grid; grid-template-columns: 0.68fr 1.32fr; gap: 64px; align-items: center;">
+      <div data-about-portrait style="aspect-ratio: 4/5; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); background-color: #0d0f13; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0 14px, transparent 14px 28px); display: flex; align-items: flex-end; justify-content: center; padding: 20px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6a6f78;">[ {{ portraitLabel }} ]</span>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4d7dff; letter-spacing: 0.12em; margin-bottom: 18px;">// {{ aboutKicker }}</div>
+        <h2 data-h2 style="margin: 0 0 22px; font-size: 46px; line-height: 1.1; font-weight: 800; letter-spacing: -0.01em;">{{ aboutTitle }}</h2>
+        <p style="margin: 0 0 32px; max-width: 640px; font-size: 18.5px; line-height: 1.7; color: #b4bac4;">{{ aboutBody }}</p>
+        <div data-about-principles style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 620px; margin-bottom: 32px;">
+          <sc-for list="{{ aboutPrinciples }}" as="f" hint-placeholder-count="4">
+            <div style="padding: 20px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(255,255,255,0.015);" style-hover="border-color: rgba(77,125,255,0.3);">
+              <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 9px;"><span style="width: 6px; height: 6px; border-radius: 2px; background: #4d7dff;"></span><div style="font-size: 16px; font-weight: 700; color: #f4f5f8;">{{ f.t }}</div></div>
+              <div style="font-size: 14.5px; line-height: 1.55; color: #9aa0aa;">{{ f.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA + LEAD FORM ============ -->
+  <section id="contact" data-close-sec style="max-width: 1200px; margin: 0 auto; padding: 120px 40px;">
+    <div data-close-box style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-radius: 26px; overflow: hidden; background: linear-gradient(150deg, #12151b, #0a0b0e); padding: 80px 64px; text-align: center;">
+      <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 30%, #000, transparent 72%); mask-image: radial-gradient(ellipse 70% 80% at 50% 30%, #000, transparent 72%); pointer-events: none;"></div>
+      <div style="position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 640px; height: 400px; background: radial-gradient(circle at 50% 40%, rgba(77,125,255,0.18), transparent 60%); pointer-events: none;"></div>
+      <div style="position: relative;">
+        <h2 data-h2-lg style="margin: 0 auto; max-width: 720px; font-size: 52px; line-height: 1.07; font-weight: 900; letter-spacing: -0.02em;">{{ closingTitleA }}<br><span style="color: #4d7dff;">{{ closingTitleB }}</span></h2>
+        <p style="margin: 24px auto 0; max-width: 560px; font-size: 18.5px; line-height: 1.6; color: #9aa0aa;">{{ closingSub }}</p>
+
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width: 560px; margin: 40px auto 0; padding: 40px; border: 1px solid rgba(70,209,158,0.3); border-radius: 16px; background: rgba(70,209,158,0.06); display: flex; align-items: center; gap: 16px; text-align: start;">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: rgba(70,209,158,0.15); display: inline-flex; align-items: center; justify-content: center; color: #46d19e; font-size: 22px;">✓</span>
+            <span style="font-size: 17px; font-weight: 500; color: #dbe7e1;">{{ formThanks }}</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="max-width: 560px; margin: 40px auto 0; text-align: start; display: flex; flex-direction: column; gap: 20px;">
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 14px; color: #c4c9d2; font-weight: 500;">{{ formNameLabel }}</span>
+              <input type="text" value="{{ formName }}" onChange="{{ onName }}" placeholder="{{ formNamePh }}" style="width: 100%; padding: 15px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: #f4f5f8; font-size: 16px;" style-focus="border-color: #4d7dff; box-shadow: 0 0 0 3px rgba(77,125,255,0.25); outline: none;" />
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 14px; color: #c4c9d2; font-weight: 500;">{{ formContactLabel }}</span>
+              <input type="text" value="{{ formContact }}" onChange="{{ onContact }}" placeholder="{{ formContactPh }}" style="width: 100%; padding: 15px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: #f4f5f8; font-size: 16px;" style-focus="border-color: #4d7dff; box-shadow: 0 0 0 3px rgba(77,125,255,0.25); outline: none;" />
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 14px; color: #c4c9d2; font-weight: 500;">{{ formMsgLabel }}</span>
+              <textarea value="{{ formMsg }}" onChange="{{ onMsg }}" placeholder="{{ formMsgPh }}" rows="4" style="width: 100%; padding: 15px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: #f4f5f8; font-size: 16px; line-height: 1.5; resize: vertical; min-height: 120px;" style-focus="border-color: #4d7dff; box-shadow: 0 0 0 3px rgba(77,125,255,0.25); outline: none;"></textarea>
+            </label>
+            <button type="submit" style="width: 100%; padding: 16px; border: none; border-radius: 12px; background: #4d7dff; color: #fff; font-size: 16.5px; font-weight: 600; font-family: inherit; cursor: pointer; box-shadow: 0 14px 44px -14px rgba(77,125,255,0.75);" style-hover="background: #5b88ff;" style-focus="outline: 2px solid #7f9dff; outline-offset: 3px;">{{ formSubmit }}</button>
+            <span style="font-size: 13.5px; color: #8a909a; text-align: center;">{{ formReassure }}</span>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="border-top: 1px solid rgba(255,255,255,0.06); background: #08090b;">
+    <div data-foot style="max-width: 1200px; margin: 0 auto; padding: 72px 40px 40px; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 18px;">
+          <span style="width: 9px; height: 9px; border-radius: 50%; background: #4d7dff; box-shadow: 0 0 16px rgba(77,125,255,0.7);"></span>
+          <span style="font-size: 18px; font-weight: 700;">{{ brandName }}</span>
+        </div>
+        <p style="margin: 0; max-width: 300px; font-size: 15px; line-height: 1.6; color: #8a909a;">{{ footerPos }}</p>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6a6f78; letter-spacing: 0.08em; margin-bottom: 16px;">{{ footerNavTitle }}</div>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5"><a href="{{ item.h }}" style="font-size: 14.5px; color: #9aa0aa;" style-hover="color: #f4f5f8;" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px; border-radius: 4px; color: #f4f5f8;">{{ item.l }}</a></sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6a6f78; letter-spacing: 0.08em; margin-bottom: 16px;">{{ footerServicesTitle }}</div>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ footerServicesList }}" as="s" hint-placeholder-count="6"><span style="font-size: 14.5px; color: #9aa0aa;">{{ s }}</span></sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6a6f78; letter-spacing: 0.08em; margin-bottom: 16px;">{{ footerConnectTitle }}</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px;">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="3"><span title="{{ soonHint }}" style="font-size: 14.5px; color: #6a6f78; cursor: default;">{{ s }}</span></sc-for>
+        </div>
+        <div role="group" aria-label="Language" style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-family: 'IBM Plex Mono', monospace;">
+          <span role="button" tabindex="0" onClick="{{ setHe }}" onKeyDown="{{ onHeKey }}" style="cursor: pointer; color: {{ heColor }}; font-weight: {{ heWeight }};" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px; border-radius: 4px;">עברית</span>
+          <span style="color: #3a3e46;">/</span>
+          <span role="button" tabindex="0" onClick="{{ setEn }}" onKeyDown="{{ onEnKey }}" style="cursor: pointer; color: {{ enColor }}; font-weight: {{ enWeight }};" style-focus="outline: 2px solid #4d7dff; outline-offset: 3px; border-radius: 4px;">English</span>
+        </div>
+      </div>
+    </div>
+    <div data-foot-bottom style="max-width: 1200px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid rgba(255,255,255,0.06);">
+      <span style="font-size: 13px; color: #6a6f78;">{{ copyright }}</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'he', name: '', contact: '', msg: '', sent: false, menuOpen: false };
+  componentDidMount() { this._onKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); }; document.addEventListener('keydown', this._onKey); }
+  componentWillUnmount() { if (this._onKey) document.removeEventListener('keydown', this._onKey); document.body.style.overflow = ''; }
+  componentDidUpdate() { document.body.style.overflow = this.state.menuOpen ? 'hidden' : ''; }
+  renderVals() {
+    const he = this.state.lang === 'he';
+    const L = (h, e) => he ? h : e;
+    const arrow = he ? '←' : '→';
+    const setHe = () => this.setState({ lang: 'he' });
+    const setEn = () => this.setState({ lang: 'en' });
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
+    const keyActivate = (fn) => (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); } };
+    return {
+      lang: this.state.lang,
+      dir: he ? 'rtl' : 'ltr',
+      arrow,
+      setHe, setEn, toggleMenu, closeMenu,
+      menuDisplay: this.state.menuOpen ? 'flex' : 'none',
+      menuLabel: L('תפריט', 'Menu'),
+      closeMenuLabel: L('סגירת תפריט', 'Close menu'),
+      menuExpanded: this.state.menuOpen ? 'true' : 'false',
+      onHeKey: keyActivate(setHe),
+      onEnKey: keyActivate(setEn),
+      heColor: he ? '#f4f5f8' : '#6a6f78',
+      enColor: he ? '#6a6f78' : '#f4f5f8',
+      heWeight: he ? '700' : '400',
+      enWeight: he ? '400' : '700',
+      brandName: L('עוז אברהמי', 'Oz Avrahami'),
+      portraitLabel: L('דיוקן מקצועי · portrait', 'professional portrait'),
+      soonHint: L('ייווסף בקרוב', 'Coming soon'),
+      nav: [
+        { l: L('עבודות', 'Work'), h: '#work' },
+        { l: L('שירותים', 'Services'), h: '#services' },
+        { l: L('תהליך העבודה', 'Process'), h: '#process' },
+        { l: L('אודות', 'About'), h: '#about' },
+        { l: L('יצירת קשר', 'Contact'), h: '#contact' },
+      ],
+      headerCta: L('בואו נדבר', "Let's talk"),
+      availability: L('מקבל פרויקטים חדשים', 'Taking on new projects'),
+      heroPre: L('טכנולוגיה שבנויה', 'Digital products. Business systems.'),
+      heroAccent: L('סביב העסק שלכם.', 'Built around your business.'),
+      heroSub: L('אני מתכנן ומפתח אתרי אינטרנט, אפליקציות, מערכות תוכנה ואוטומציות שעוזרות לעסקים לעבוד חכם יותר, לחסוך זמן ולצמוח.', 'I design and build websites, applications, custom software and automation systems that help businesses work smarter, save time and grow.'),
+      ctaPrimary: L('בואו נדבר על הפרויקט', 'Start a project'),
+      ctaSecondary: L('לפרויקטים שלי', 'View my work'),
+      stat1v: 'Web · Mobile', stat1l: L('אפליקציות ומערכות', 'Apps & systems'),
+      stat2v: L('אוטומציה · AI', 'Automation · AI'), stat2l: L('תהליכים חכמים', 'Smart workflows'),
+      cap: [L('אתרי אינטרנט', 'Websites'), L('מערכות לעסקים', 'Business systems'), L('אפליקציות', 'Applications'), L('תוכנה בהתאמה אישית', 'Custom software'), L('אוטומציות', 'Automation'), L('אינטגרציות', 'Integrations'), 'AI'],
+      // product mockup UI strings
+      ui: {
+        sample: L('הדגמה', 'Sample'),
+        today: L('היום', 'Today'),
+        weeklyPlan: L('תכנון שבועי', 'Weekly plan'),
+        taskClientCall: L('שיחה עם לקוח', 'Client call'),
+        taskWeekly: L('תכנון שבועי', 'Weekly planning'),
+        taskScoping: L('שיחת אפיון', 'Scoping call'),
+        taskDoc: L('כתיבת מסמך', 'Write document'),
+        taskReview: L('בדיקת גרסה', 'Review build'),
+        sun: L('ראשון', 'Sun'), mon: L('שני', 'Mon'), tue: L('שלישי', 'Tue'),
+        finTotalAssets: L('סה״כ נכסים', 'Total assets'),
+        finIncome: L('הכנסות', 'Income'),
+        finMonthly: L('הכנסות לפי חודש', 'Monthly income'),
+        finPortfolio: L('תיק השקעות', 'Portfolio'),
+        finCashflow: L('תזרים חודשי', 'Monthly cash flow'),
+        finLiabilities: L('התחייבויות', 'Liabilities'),
+        finIncomeRow: L('הכנסה', 'Income'),
+        finExpenseRow: L('הוצאה', 'Expense'),
+        navOverview: L('סקירה כללית', 'Overview'),
+        navTransactions: L('תנועות', 'Transactions'),
+        navInvestments: L('השקעות', 'Investments'),
+        navLoans: L('הלוואות', 'Loans'),
+        navReports: L('דוחות', 'Reports'),
+        trdWinRate: L('אחוז הצלחה', 'Win rate'),
+        trdProfitFactor: L('יחס רווח/הפסד', 'Profit factor'),
+        trdTotalTrades: L('סה״כ עסקאות', 'Total trades'),
+        trdCumulative: L('רווח מצטבר', 'Cumulative'),
+        trdEquity: L('עקומת הון', 'Equity curve'),
+        trdRecent: L('עסקאות אחרונות', 'Recent trades'),
+        long: L('לונג', 'Long'), short: L('שורט', 'Short'),
+        assetA: L('נכס A', 'Asset A'), assetB: L('נכס B', 'Asset B'), assetC: L('נכס C', 'Asset C'), assetD: L('נכס D', 'Asset D'),
+        tgProtection: L('הגנה פעילה', 'Protection active'),
+        tgConnected: L('מחובר לפלטפורמה', 'Connected'),
+        tgMaxLoss: L('הפסד יומי מרבי', 'Max daily loss'),
+        tgMaxTrades: L('מקסימום עסקאות', 'Max trades'),
+        tgAutoEnforce: L('אכיפה אוטומטית', 'Auto-enforcement'),
+        tgSet: L('מוגדר', 'Set'), tgActive: L('פעיל', 'Active'),
+      },
+      servicesKicker: L('שירותים', 'Services'),
+      servicesTitle: L('טכנולוגיה שבנויה סביב העסק שלכם.', 'Technology built around your business.'),
+      servicesSub: L('כל עסק שונה, ולכן הטכנולוגיה צריכה להתאים לתהליך העבודה — לא להפך. אני בונה את הפתרון סביב הצורך האמיתי שלכם.', 'Every business is different, so the technology should fit the way you work — not the other way around. I build the solution around your real need.'),
+      services: [
+        { n: '01', title: L('אתרי אינטרנט וחוויות דיגיטליות', 'Websites & digital experiences'), desc: L('אתרים מהירים, מודרניים ומדויקים שנבנים סביב המטרות העסקיות שלכם — מאתרי תדמית ודפי נחיתה ועד אתרים מורכבים ומערכות מבוססות Web.', 'Fast, modern, precise websites built around your business goals — from brochure sites and landing pages to complex web platforms.') },
+        { n: '02', title: L('מערכות לעסקים', 'Business systems'), desc: L('מערכות ניהול, דשבורדים, פורטלים, כלי עבודה פנימיים ומערכות שמרכזות תהליכים ומידע במקום אחד.', 'Management systems, dashboards, portals and internal tools that bring processes and information into one place.') },
+        { n: '03', title: L('אפליקציות ותוכנה', 'Applications & software'), desc: L('פיתוח אפליקציות Web ומובייל ותוכנות בהתאמה אישית לצרכים ולתהליכי העבודה של העסק.', 'Web and mobile applications and custom software built around your needs and workflows.') },
+        { n: '04', title: L('אוטומציות ואינטגרציות', 'Automation & integrations'), desc: L('חיבור מערכות ושירותים, עבודה מול APIs ואוטומציה של תהליכים ידניים וחוזרים כדי לחסוך זמן ולצמצם טעויות.', 'Connecting systems and services, working with APIs and automating manual, repetitive processes to save time and reduce errors.') },
+        { n: '05', title: L('פתרונות AI', 'AI solutions'), desc: L('שילוב יכולות AI בתוך מערכות ותהליכים קיימים כדי לייעל עבודה, לנתח מידע וליצור כלים חכמים שמתאימים לעסק.', 'Embedding AI into existing systems and processes to streamline work, analyze information and build smart tools that fit your business.') },
+      ],
+      workKicker: L('עבודות', 'Work'),
+      workTitle: L('פרויקטים נבחרים.', 'Selected projects.'),
+      workSub: L('מערכות ומוצרים שנבנו מתוך צורך אמיתי — מהרעיון ועד למוצר עובד.', 'Systems and products built from a real need — from idea to working product.'),
+      workLead: L('אני לא רק בונה אתרים — אני בונה מוצרים ומערכות תוכנה אמיתיות.', "I don't just build websites — I build real products and software systems."),
+      pFinCat: L('מערכת לניהול פיננסי', 'Financial management platform'),
+      pFinTitle: 'Finance Tracker',
+      pFinDesc: L('מערכת מקיפה לניהול פיננסי שמרכזת תנועות, תקציבים, הלוואות, השקעות, נכסים והתחייבויות במקום אחד — עם דשבורדים, חישובים אוטומטיים וכלים לקבלת תמונה פיננסית ברורה.', 'A comprehensive financial platform that brings transactions, budgets, loans, investments, assets and liabilities into one place — with dashboards, automatic calculations and a clear financial picture.'),
+      pFinTags: ['WEB APP', 'FINTECH', 'DASHBOARD', 'AUTOMATION', 'INTEGRATIONS'],
+      pTrdCat: L('פלטפורמה לניהול וניתוח מסחר', 'Trading analytics & journaling'),
+      pTrdTitle: 'Trading Journal',
+      pTrdDesc: L('מערכת לסוחרים שמרכזת עסקאות, ביצועים, ניתוחים, יומן מסחר וכללי עבודה — ומאפשרת להבין בצורה ברורה מה עובד, איפה נעשות טעויות ואיך משתפרים לאורך זמן.', 'A platform for traders that centralizes trades, performance, analysis, a journal and rules — making it clear what works, where mistakes happen and how to improve over time.'),
+      pTrdTags: ['TRADING', 'ANALYTICS', 'WEB APP', 'DATA', 'INTEGRATIONS'],
+      pLifeCat: L('אפליקציה לתכנון וניהול היום', 'Daily planning & productivity app'),
+      pLifeTitle: 'LifeOS',
+      pLifeDesc: L('אפליקציה שנבנתה בגישת Mobile-First כדי להפוך משימות ותכנון שבועי לתהליך פשוט וברור — מהקליטה הראשונית של משימה ועד לתכנון, ביצוע והשלמה.', 'A mobile-first app that turns tasks and weekly planning into a simple, clear flow — from quick capture through planning, execution and completion.'),
+      pLifeTags: ['MOBILE', 'PRODUCTIVITY', 'APP', 'UX', 'PRODUCT DESIGN'],
+      pGuardCat: L('תוכנה ואוטומציה לניהול משמעת במסחר', 'Trading discipline software & automation'),
+      pGuardTitle: 'TradeGuard',
+      pGuardDesc: L('מערכת תוכנה שמחברת בין כללי ניהול הסיכון של הסוחר לבין סביבת המסחר שלו, במטרה להפוך כללים והגבלות מתכנון ידני למנגנון טכנולוגי שניתן לאכוף.', "Desktop software that connects a trader's risk rules to their trading environment, turning manual limits into an enforceable technical mechanism."),
+      pGuardTags: ['DESKTOP', 'AUTOMATION', 'TRADING', 'SOFTWARE', 'INTEGRATIONS'],
+      processKicker: L('תהליך העבודה', 'Process'),
+      processTitle: L('מרעיון למוצר עובד.', 'From idea to working product.'),
+      processSub: L('תהליך אחד שמחבר בין הצורך העסקי, חוויית המשתמש והטכנולוגיה.', 'One process that connects the business need, the user experience and the technology.'),
+      process: [
+        { n: '01', name: L('מבינים', 'Understand'), desc: L('מתחילים מהעסק, לא מהטכנולוגיה. מבינים את הצורך, המשתמשים והתהליך הקיים לפני שבוחרים פתרון.', 'We start from the business, not the technology — understanding the need, the users and the existing process before choosing a solution.') },
+        { n: '02', name: L('מתכננים', 'Define'), desc: L('מגדירים את המוצר, חוויית המשתמש והפתרון הטכנולוגי הנכון.', 'We define the product, the user experience and the right technical solution.') },
+        { n: '03', name: L('בונים', 'Build'), desc: L('הופכים את התכנון למוצר אמיתי באמצעות טכנולוגיות מודרניות, קוד איכותי ותהליך פיתוח מסודר.', 'We turn the plan into a real product with modern technology, quality code and an organized development process.') },
+        { n: '04', name: L('משיקים ומשפרים', 'Launch & improve'), desc: L('עולים לאוויר, בודקים שימוש אמיתי וממשיכים לשפר בהתאם לצורך.', 'We go live, test real usage and keep improving as needed.') },
+      ],
+      whyKicker: L('למה לעבוד איתי', 'Why work with me'),
+      whyTitleA: L('פחות שכבות.', 'Fewer layers.'),
+      whyTitleB: L('יותר עשייה.', 'More building.'),
+      whySub: L('שותף טכנולוגי אחד, מהרעיון ועד המוצר. בלי מתווכים ובלי שכבות ניהול — ישירות מול מי שבונה.', 'One technology partner, from concept to product. No middlemen, no management layers — directly with the person who builds.'),
+      why: [
+        { i: 1, t: L('מדברים ישירות עם מי שבונה.', 'You talk directly to the person who builds.') },
+        { i: 2, t: L('לא רק פיתוח — חשיבה על המוצר והעסק.', 'Not just development — thinking about the product and the business.') },
+        { i: 3, t: L('פתרון שמתאים לתהליך שלכם, לא להפך.', 'A solution that fits your process, not the other way around.') },
+        { i: 4, t: L('ליווי משלב הרעיון ועד העלייה לאוויר.', 'Support from the idea stage all the way to launch.') },
+      ],
+      techKicker: L('טכנולוגיה', 'Technology'),
+      techTitle: L('נבנה עם טכנולוגיות מודרניות.', 'Built with modern technology.'),
+      techSub: L('הכלים הם אמצעי, לא מטרה. אני בוחר את הטכנולוגיה שמתאימה לפרויקט — כדי שהתוצאה תהיה מהירה, יציבה וקלה לתחזוקה.', 'The tools are a means, not the goal. I choose the technology that fits the project — so the result is fast, stable and easy to maintain.'),
+      tech: ['React', 'Next.js', 'Node.js', 'TypeScript', 'JavaScript', 'Python', 'PostgreSQL', 'Supabase', 'APIs', 'Cloud', 'AI', 'Mobile', 'Automation'],
+      aboutKicker: L('אודות', 'About'),
+      aboutTitle: L('נעים להכיר.', 'Nice to meet you.'),
+      aboutBody: L('אני בונה מוצרים דיגיטליים ומערכות תוכנה — לא רק אתרים. עבדתי על מערכות ניהול, פלטפורמות מבוססות נתונים, אפליקציות מובייל ותוכנות דסקטופ, ותמיד מתוך אותה גישה: קודם להבין את הבעיה העסקית, ורק אחר כך לבחור את הפתרון הטכנולוגי. אני מעורב ישירות בכל שלב — מהאפיון ועד ההשקה — ומחבר בין מה שהעסק צריך לבין מה שאפשר לבנות.', "I build digital products and software systems — not just websites. I've worked on management systems, data-driven platforms, mobile apps and desktop software, always with the same approach: understand the business problem first, then choose the technology. I'm involved directly at every stage — from scoping to launch — connecting what the business needs with what's possible to build."),
+      aboutPrinciples: [
+        { t: L('חשיבה מוצרית', 'Product thinking'), d: L('לא רק קוד — הבנה של המוצר והבעיה שהוא פותר.', 'Not just code — understanding the product and the problem it solves.') },
+        { t: L('מערכות לעסקים', 'Business systems'), d: L('ניסיון בבניית כלים, מערכות ותהליכים דיגיטליים מורכבים.', 'Experience building complex tools, systems and digital processes.') },
+        { t: L('טכנולוגיה + עסק', 'Technology + business'), d: L('החלטות טכנולוגיות שמתחילות מהצורך העסקי.', 'Technical decisions that start from the business need.') },
+        { t: L('עבודה ישירה', 'Direct collaboration'), d: L('תקשורת ישירה לאורך התכנון, הפיתוח וההשקה.', 'Direct communication through planning, development and launch.') },
+      ],
+      closingTitleA: L('יש לכם רעיון?', 'Have an idea?'),
+      closingTitleB: L('בואו נבנה אותו.', "Let's build it."),
+      closingSub: L('ספרו לי מה אתם רוצים לבנות, לשפר או להפוך לאוטומטי — ונבדוק איך אפשר להפוך את זה לפתרון שעובד.', "Tell me what you want to build, improve or automate — and we'll figure out how to turn it into a solution that works."),
+      // lead form
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      formName: this.state.name, formContact: this.state.contact, formMsg: this.state.msg,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onContact: (e) => this.setState({ contact: e.target.value }),
+      onMsg: (e) => this.setState({ msg: e.target.value }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      formNameLabel: L('שם', 'Name'),
+      formNamePh: L('השם המלא', 'Full name'),
+      formContactLabel: L('איך נוח לחזור אליכם?', 'How should I get back to you?'),
+      formContactPh: L('טלפון או אימייל', 'Phone or email'),
+      formMsgLabel: L('מה אתם רוצים לבנות?', 'What would you like to build?'),
+      formMsgPh: L('ספרו לי בכמה מילים על האתר, המערכת, האפליקציה או התהליך שתרצו לשפר...', 'Tell me briefly about the website, system, app or process you want to improve...'),
+      formSubmit: L('שלחו לי את הפרטים', 'Send project details'),
+      formReassure: L('בלי התחייבות. נדבר, נבין את הצורך ונראה אם זה מתאים.', "No commitment. We'll talk, understand the need and see if we're a good fit."),
+      formThanks: L('תודה! קיבלתי את הפרטים ואחזור אליכם בהקדם.', "Thanks! I've got your details and will get back to you soon."),
+      footerPos: L('מתכנן ומפתח מוצרים דיגיטליים, מערכות תוכנה ואוטומציות לעסקים.', 'I design and build digital products, software systems and automation for businesses.'),
+      footerNavTitle: L('ניווט', 'Navigation'),
+      footerServicesTitle: L('שירותים', 'Services'),
+      footerConnectTitle: L('קשר', 'Connect'),
+      footerServicesList: [L('אתרי אינטרנט', 'Websites'), L('אפליקציות', 'Applications'), L('מערכות לעסקים', 'Business systems'), L('תוכנה', 'Software'), L('אוטומציות', 'Automation'), 'AI'],
+      socials: ['Email', 'LinkedIn', 'GitHub'],
+      copyright: L('© 2026 עוז אברהמי. כל הזכויות שמורות.', '© 2026 Oz Avrahami. All rights reserved.'),
+    };
+  }
+}
+</script>
+</body>
+</html>
