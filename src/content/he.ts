@@ -21,6 +21,9 @@ export const he = {
     menuLabel: 'תפריט',
     closeMenuLabel: 'סגירת תפריט',
     languageLabel: 'בחירת שפה',
+    hebrewLabel: 'עברית',
+    englishShortLabel: 'EN',
+    englishLongLabel: 'English',
   },
   hero: {
     availability: 'מקבל פרויקטים חדשים',

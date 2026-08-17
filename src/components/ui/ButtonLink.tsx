@@ -3,6 +3,7 @@ import type { AnchorHTMLAttributes } from 'react'
 export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: 'primary' | 'secondary' | 'inverse'
   size?: 'compact' | 'default'
+  disabled?: boolean
 }
 
 const variantClasses = {
@@ -19,13 +20,29 @@ const sizeClasses = {
 export default function ButtonLink({
   variant = 'primary',
   size = 'default',
+  disabled = false,
   className = '',
+  children,
+  title,
   ...props
 }: ButtonLinkProps) {
+  const classes = `inline-flex items-center justify-center gap-2.5 font-semibold transition-colors ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'cursor-not-allowed opacity-60' : ''} ${className}`.trim()
+
+  if (disabled) {
+    return (
+      <span role="link" aria-disabled="true" title={title} className={classes}>
+        {children}
+      </span>
+    )
+  }
+
   return (
     <a
-      className={`inline-flex items-center justify-center gap-2.5 font-semibold transition-colors ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim()}
+      className={classes}
+      title={title}
       {...props}
-    />
+    >
+      {children}
+    </a>
   )
 }

@@ -21,6 +21,9 @@ export const en = {
     menuLabel: 'Menu',
     closeMenuLabel: 'Close menu',
     languageLabel: 'Language selection',
+    hebrewLabel: 'עברית',
+    englishShortLabel: 'EN',
+    englishLongLabel: 'English',
   },
   hero: {
     availability: 'Taking on new projects',

@@ -45,6 +45,9 @@ export interface SiteDictionary {
     menuLabel: string
     closeMenuLabel: string
     languageLabel: string
+    hebrewLabel: string
+    englishShortLabel: string
+    englishLongLabel: string
   }
   hero: {
     availability: string
