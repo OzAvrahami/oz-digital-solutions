@@ -11,15 +11,25 @@ export interface SiteConfig {
   linkedInUrl: string | null
   githubUrl: string | null
   cvUrl: string | null
+  contactDelivery: {
+    recipientEmail: string
+    senderName: string
+    senderEmail: string
+  }
   projects: Record<ProjectId, ProjectLinkConfig>
 }
 
 export const siteConfig = {
   productionSiteUrl: null,
-  email: null,
-  linkedInUrl: null,
-  githubUrl: null,
+  email: 'contact@ozavrahami.co.il',
+  linkedInUrl: 'https://www.linkedin.com/in/oz-avrahami-b209584a/',
+  githubUrl: 'https://github.com/OzAvrahami',
   cvUrl: null,
+  contactDelivery: {
+    recipientEmail: 'contact@ozavrahami.co.il',
+    senderName: 'Oz Avrahami Website',
+    senderEmail: 'website@ozavrahami.co.il',
+  },
   projects: {
     financeTracker: {
       liveUrl: null,

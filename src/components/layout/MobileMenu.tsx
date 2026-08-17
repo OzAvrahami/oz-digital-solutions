@@ -20,6 +20,7 @@ interface MobileMenuProps {
   identityName: string
   labels: SiteDictionary['header']
   primaryCta: string
+  contactHref: string
   unavailableLabel: string
   navigationItems: readonly HeaderNavigationItem[]
 }
@@ -35,6 +36,7 @@ export default function MobileMenu({
   identityName,
   labels,
   primaryCta,
+  contactHref,
   unavailableLabel,
   navigationItems,
 }: MobileMenuProps) {
@@ -168,9 +170,8 @@ export default function MobileMenu({
           </nav>
 
           <ButtonLink
-            href="#"
-            disabled
-            title={unavailableLabel}
+            href={contactHref}
+            onClick={closeMenu}
             className="mt-7 w-full py-[17px] text-[17px]"
           >
             {primaryCta}

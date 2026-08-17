@@ -119,9 +119,21 @@ export interface SiteDictionary {
       messageLabel: string
       messagePlaceholder: string
       submitLabel: string
+      pendingLabel: string
       reassurance: string
       successMessage: string
-      errorMessage: string | null
+      validationMessage: string
+      configurationErrorMessage: string
+      submissionErrorMessage: string
+      validation: {
+        nameRequired: string
+        nameTooLong: string
+        contactRequired: string
+        contactTooLong: string
+        messageRequired: string
+        messageTooLong: string
+        invalidCharacters: string
+      }
     }
   }
   footer: {

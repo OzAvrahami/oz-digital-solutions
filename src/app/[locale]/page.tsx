@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation'
 
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import About from '@/components/sections/About'
 import CapabilityMarquee from '@/components/sections/CapabilityMarquee'
+import Contact from '@/components/sections/Contact'
 import Hero from '@/components/sections/Hero'
 import Process from '@/components/sections/Process'
 import Services from '@/components/sections/Services'
@@ -34,7 +36,9 @@ export default async function LocalePage({ params }: LocalePageProps) {
         <WhyWorkWithMe dictionary={dictionary} />
         <Technology dictionary={dictionary} />
         <About dictionary={dictionary} />
+        <Contact locale={locale} dictionary={dictionary} />
       </main>
+      <Footer locale={locale} dictionary={dictionary} />
     </>
   )
 }

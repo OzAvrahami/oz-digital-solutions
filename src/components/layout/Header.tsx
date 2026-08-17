@@ -12,7 +12,7 @@ interface HeaderProps {
   dictionary: SiteDictionary
 }
 
-const implementedSections = new Set(['work', 'services', 'process', 'about'])
+const implementedSections = new Set(['work', 'services', 'process', 'about', 'contact'])
 
 export default function Header({ locale, dictionary }: HeaderProps) {
   const navigationItems: HeaderNavigationItem[] = navigationOrder.map((key) => ({
@@ -62,11 +62,9 @@ export default function Header({ locale, dictionary }: HeaderProps) {
             <LanguageSwitcher locale={locale} labels={dictionary.header} />
           </div>
           <ButtonLink
-            href="#"
+            href={`/${locale}#contact`}
             variant="inverse"
             size="compact"
-            disabled
-            title={dictionary.footer.unavailableLabel}
             className="hidden desktop:inline-flex"
           >
             {dictionary.header.contactCta}
@@ -76,6 +74,7 @@ export default function Header({ locale, dictionary }: HeaderProps) {
             identityName={dictionary.identity.name}
             labels={dictionary.header}
             primaryCta={dictionary.hero.primaryCta}
+            contactHref={`/${locale}#contact`}
             unavailableLabel={dictionary.footer.unavailableLabel}
             navigationItems={navigationItems}
           />

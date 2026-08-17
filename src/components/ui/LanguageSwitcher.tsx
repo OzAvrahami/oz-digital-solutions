@@ -19,7 +19,7 @@ function subscribeToHash(onStoreChange: () => void) {
 }
 
 function getSupportedHash() {
-  return ['#services', '#work', '#process', '#about'].includes(window.location.hash)
+  return ['#services', '#work', '#process', '#about', '#contact'].includes(window.location.hash)
     ? window.location.hash
     : ''
 }

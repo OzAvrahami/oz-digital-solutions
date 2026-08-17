@@ -1,126 +1,111 @@
-import { Code2, Mail, Phone, MapPin, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
-const footerLinks = {
-  services: [
-    { label: 'פיתוח אתרים', href: '#services' },
-    { label: 'חנויות אונליין', href: '#services' },
-    { label: 'אוטומציות עסקיות', href: '#services' },
-    { label: 'פתרונות AI', href: '#services' },
-    { label: 'פיתוח מותאם אישית', href: '#services' },
-  ],
-  nav: [
-    { label: 'תהליך העבודה', href: '#process' },
-    { label: 'פרויקטים', href: '#portfolio' },
-    { label: 'המלצות', href: '#testimonials' },
-    { label: 'שאלות נפוצות', href: '#faq' },
-    { label: 'צרו קשר', href: '#contact' },
-  ],
+import Container from '@/components/ui/Container'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
+import { siteConfig } from '@/config/site'
+import { navigationOrder, type SiteDictionary } from '@/content'
+import type { Locale } from '@/lib/i18n'
+
+interface FooterProps {
+  locale: Locale
+  dictionary: SiteDictionary
 }
 
-export default function Footer() {
+export default function Footer({ locale, dictionary }: FooterProps) {
+  const socialLinks = [
+    {
+      key: 'email' as const,
+      href: `mailto:${siteConfig.email}`,
+      external: false,
+    },
+    {
+      key: 'linkedIn' as const,
+      href: siteConfig.linkedInUrl,
+      external: true,
+    },
+    {
+      key: 'github' as const,
+      href: siteConfig.githubUrl,
+      external: true,
+    },
+  ]
+
   return (
-    <footer className="bg-[#060b14] border-t border-[#1e3a5f]/40">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-          {/* Brand column */}
-          <div className="lg:col-span-1 space-y-5">
-            <a href="#" className="flex items-center gap-2 group w-fit">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-xl text-white">
-                OZ<span className="text-blue-400">.</span>Digital
-              </span>
-            </a>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              אני בונה מערכות דיגיטליות שמניעות עסקים קדימה — אתרים, אוטומציות ופתרונות AI מותאמים אישית.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors group"
-            >
-              <span>בואו נדבר</span>
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            </a>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-5">שירותים</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-slate-400 hover:text-blue-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <h3 className="text-white font-semibold mb-5">ניווט</h3>
-            <ul className="space-y-3">
-              {footerLinks.nav.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-slate-400 hover:text-blue-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold mb-5">יצירת קשר</h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="mailto:hello@ozdigital.co.il"
-                  className="flex items-center gap-3 text-slate-400 hover:text-blue-400 text-sm transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                  hello@ozdigital.co.il
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+972501234567"
-                  className="flex items-center gap-3 text-slate-400 hover:text-blue-400 text-sm transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                  050-123-4567
-                </a>
-              </li>
-              <li className="flex items-center gap-3 text-slate-400 text-sm">
-                <MapPin className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                ישראל
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-[#1e3a5f]/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-slate-500 text-sm">
-            © 2025 OZ Digital Solutions. כל הזכויות שמורות.
-          </p>
-          <p className="text-slate-600 text-xs">
-            עוצב ופותח עם ❤️ בישראל
+    <footer className="border-t border-white/[0.06] bg-section">
+      <Container className="grid gap-12 py-14 desktop:grid-cols-[1.6fr_1fr_1fr_1fr] desktop:pb-10 desktop:pt-[72px]">
+        <div>
+          <Link
+            href={`/${locale}#top`}
+            className="mb-[18px] inline-flex items-center gap-[11px] rounded-md text-lg font-bold text-text"
+          >
+            <span
+              aria-hidden="true"
+              className="size-[9px] rounded-full bg-accent shadow-[0_0_16px_rgba(77,125,255,0.7)]"
+            />
+            {dictionary.identity.name}
+          </Link>
+          <p className="max-w-[300px] text-[15px] leading-[1.6] text-text-muted">
+            {dictionary.footer.positioning}
           </p>
         </div>
+
+        <nav aria-label={dictionary.footer.navigationTitle}>
+          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+            {dictionary.footer.navigationTitle}
+          </h2>
+          <ul className="flex flex-col gap-[11px]">
+            {navigationOrder.map((key) => (
+              <li key={key}>
+                <Link
+                  href={`/${locale}#${key}`}
+                  className="rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                >
+                  {dictionary.navigation[key]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+            {dictionary.footer.servicesTitle}
+          </h2>
+          <ul className="flex flex-col gap-[11px]">
+            {dictionary.footer.serviceLabels.map((service) => (
+              <li key={service} className="text-[14.5px] text-text-secondary">
+                {service}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+            {dictionary.footer.connectTitle}
+          </h2>
+          <ul className="mb-5 flex flex-col gap-[11px]">
+            {socialLinks.map((link) => (
+              <li key={link.key}>
+                <a
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  className="break-words rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                >
+                  {dictionary.footer.socialLabels[link.key]}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LanguageSwitcher locale={locale} labels={dictionary.header} longEnglishLabel />
+        </div>
+      </Container>
+
+      <div className="border-t border-white/[0.06]">
+        <Container className="py-6">
+          <p className="text-[13px] text-text-quiet">{dictionary.footer.copyright}</p>
+        </Container>
       </div>
     </footer>
   )

@@ -12,7 +12,6 @@ interface HeroProps {
 
 export default function Hero({ locale, dictionary }: HeroProps) {
   const { hero } = dictionary
-  const unavailableLabel = dictionary.footer.unavailableLabel
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -36,7 +35,7 @@ export default function Hero({ locale, dictionary }: HeroProps) {
           </p>
 
           <div className="mt-9 flex flex-col items-stretch gap-3.5 desktop:flex-row desktop:flex-wrap desktop:items-center">
-            <ButtonLink href="#" disabled title={unavailableLabel} className="w-full desktop:w-auto">
+            <ButtonLink href={`/${locale}#contact`} className="w-full desktop:w-auto">
               {hero.primaryCta}
             </ButtonLink>
             <ButtonLink href={`/${locale}#work`} variant="secondary" className="w-full desktop:w-auto">
