@@ -1,11 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --font-heebo: 'Heebo', sans-serif;
+  --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
+
+  /* Approved portfolio foundation. Legacy variables remain until the visual cutover. */
+  --portfolio-canvas: #0a0b0e;
+  --portfolio-section: #08090b;
+  --portfolio-surface: #101319;
+  --portfolio-surface-raised: #0d0f13;
+  --portfolio-surface-deep: #0b0d11;
+  --portfolio-text: #f4f5f8;
+  --portfolio-text-secondary: #9aa0aa;
+  --portfolio-text-muted: #8a909a;
+  --portfolio-text-quiet: #6a6f78;
+  --portfolio-accent: #4d7dff;
+  --portfolio-accent-hover: #5b88ff;
+  --portfolio-accent-light: #7f9dff;
+  --portfolio-success: #46d19e;
+  --portfolio-danger: #ff8f6b;
+
   --bg-primary: #060b14;
   --bg-secondary: #0d1526;
   --bg-card: #0f1a2e;
@@ -33,6 +49,11 @@ body {
   font-family: var(--font-heebo), sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--portfolio-accent);
+  outline-offset: 3px;
 }
 
 /* Custom scrollbar */
@@ -201,4 +222,19 @@ body {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
