@@ -1,3 +1,4 @@
+import IdentityPanel from '@/components/about/IdentityPanel'
 import Container from '@/components/ui/Container'
 import { principleOrder, type SiteDictionary } from '@/content'
 
@@ -11,16 +12,7 @@ export default function About({ dictionary }: AboutProps) {
   return (
     <section id="about" className="scroll-mt-20 border-t border-white/[0.05] bg-section">
       <Container className="grid items-center gap-[30px] py-[72px] desktop:grid-cols-[0.68fr_1.32fr] desktop:gap-16 desktop:py-[120px]">
-        <div
-          aria-hidden="true"
-          className="mx-auto flex aspect-[4/5] w-full max-w-[320px] items-end justify-center rounded-[18px] border border-white/[0.08] bg-surface-raised p-5 desktop:max-w-none"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0 14px, transparent 14px 28px)',
-          }}
-        >
-          <span className="font-mono text-xs text-text-quiet">[ {identity.portraitLabel} ]</span>
-        </div>
+        <IdentityPanel name={identity.name} />
 
         <div>
           <p className="mb-[18px] font-mono text-[13px] tracking-[0.12em] text-accent">
