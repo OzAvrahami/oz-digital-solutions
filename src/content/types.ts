@@ -1,4 +1,4 @@
-export type NavigationKey = 'work' | 'services' | 'process' | 'about' | 'contact'
+export type NavigationKey = 'work' | 'services' | 'guides' | 'process' | 'about' | 'contact'
 
 export type CapabilityKey =
   | 'websites'
@@ -141,7 +141,10 @@ export interface SiteDictionary {
     navigationTitle: string
     servicesTitle: string
     connectTitle: string
-    serviceLabels: readonly string[]
+    serviceLinks: readonly {
+      slug: 'websites' | 'ecommerce' | 'automation'
+      label: string
+    }[]
     socialLabels: Record<SocialKey, string>
     copyright: string
   }

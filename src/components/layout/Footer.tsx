@@ -57,7 +57,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
             {navigationOrder.map((key) => (
               <li key={key}>
                 <Link
-                  href={`/${locale}#${key}`}
+                  href={key === 'guides' ? `/${locale}/guides` : `/${locale}#${key}`}
                   className="rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
                 >
                   {dictionary.navigation[key]}
@@ -72,9 +72,14 @@ export default function Footer({ locale, dictionary }: FooterProps) {
             {dictionary.footer.servicesTitle}
           </h2>
           <ul className="flex flex-col gap-[11px]">
-            {dictionary.footer.serviceLabels.map((service) => (
-              <li key={service} className="text-[14.5px] text-text-secondary">
-                {service}
+            {dictionary.footer.serviceLinks.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/${locale}/services/${service.slug}`}
+                  className="rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                >
+                  {service.label}
+                </Link>
               </li>
             ))}
           </ul>

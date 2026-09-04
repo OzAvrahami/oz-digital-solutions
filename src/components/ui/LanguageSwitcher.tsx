@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useSyncExternalStore } from 'react'
 
 import type { SiteDictionary } from '@/content'
@@ -19,9 +20,7 @@ function subscribeToHash(onStoreChange: () => void) {
 }
 
 function getSupportedHash() {
-  return ['#services', '#work', '#process', '#about', '#contact'].includes(window.location.hash)
-    ? window.location.hash
-    : ''
+  return /^#[A-Za-z0-9_-]+$/.test(window.location.hash) ? window.location.hash : ''
 }
 
 function getServerHash() {
@@ -34,6 +33,7 @@ export default function LanguageSwitcher({
   longEnglishLabel = false,
   onNavigate,
 }: LanguageSwitcherProps) {
+  const pathname = usePathname()
   const currentHash = useSyncExternalStore(subscribeToHash, getSupportedHash, getServerHash)
   const options = [
     { locale: 'he' as const, label: labels.hebrewLabel },
@@ -58,7 +58,7 @@ export default function LanguageSwitcher({
             </span>
           ) : (
             <Link
-              href={`/${option.locale}${currentHash}`}
+              href={`/${option.locale}${pathname.replace(/^\/(he|en)/, '')}${currentHash}`}
               onClick={onNavigate}
               className="rounded text-text-quiet transition-colors hover:text-text focus-visible:text-text"
               hrefLang={option.locale}

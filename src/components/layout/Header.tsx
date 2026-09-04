@@ -16,7 +16,7 @@ export default function Header({ locale, dictionary }: HeaderProps) {
   const navigationItems: HeaderNavigationItem[] = navigationOrder.map((key) => ({
     key,
     label: dictionary.navigation[key],
-    href: `/${locale}#${key}`,
+    href: key === 'guides' ? `/${locale}/guides` : `/${locale}#${key}`,
   }))
 
   return (
@@ -30,7 +30,7 @@ export default function Header({ locale, dictionary }: HeaderProps) {
           {dictionary.identity.name}
         </Link>
 
-        <nav aria-label={dictionary.header.menuLabel} className="hidden items-center gap-8 desktop:flex">
+        <nav aria-label={dictionary.header.menuLabel} className="hidden items-center gap-5 lg:flex">
           {navigationItems.map((item) => (
             <Link
               key={item.key}
@@ -43,14 +43,14 @@ export default function Header({ locale, dictionary }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-5">
-          <div className="hidden desktop:block">
+          <div className="hidden lg:block">
             <LanguageSwitcher locale={locale} labels={dictionary.header} />
           </div>
           <ButtonLink
             href={`/${locale}#contact`}
             variant="inverse"
             size="compact"
-            className="hidden desktop:inline-flex"
+            className="hidden xl:inline-flex"
           >
             {dictionary.header.contactCta}
           </ButtonLink>

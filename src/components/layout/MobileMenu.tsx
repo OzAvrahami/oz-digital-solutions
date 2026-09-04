@@ -84,7 +84,7 @@ export default function MobileMenu({
       if (event.matches) setOpen(false)
     }
 
-    const desktopQuery = window.matchMedia('(min-width: 821px)')
+    const desktopQuery = window.matchMedia('(min-width: 1024px)')
     document.addEventListener('keydown', handleKeyDown)
     desktopQuery.addEventListener('change', handleDesktopBreakpoint)
 
@@ -107,7 +107,7 @@ export default function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen(true)}
-        className="inline-flex size-11 items-center justify-center rounded-[10px] border border-white/15 text-text desktop:hidden"
+        className="inline-flex size-11 items-center justify-center rounded-[10px] border border-white/15 text-text lg:hidden"
       >
         <span className="relative block h-3.5 w-[18px]" aria-hidden="true">
           <span className="absolute inset-x-0 top-0 h-0.5 bg-current" />
@@ -123,7 +123,7 @@ export default function MobileMenu({
           role="dialog"
           aria-modal="true"
           aria-label={labels.menuLabel}
-          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-section/95 px-[22px] pb-10 pt-5 backdrop-blur-xl desktop:hidden"
+          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-section/95 px-[22px] pb-10 pt-5 backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-[11px] text-lg font-bold text-text">

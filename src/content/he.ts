@@ -12,6 +12,7 @@ export const he = {
   navigation: {
     work: 'עבודות',
     services: 'שירותים',
+    guides: 'מדריכים',
     process: 'תהליך העבודה',
     about: 'אודות',
     contact: 'יצירת קשר',
@@ -220,7 +221,11 @@ export const he = {
     navigationTitle: 'ניווט',
     servicesTitle: 'שירותים',
     connectTitle: 'קשר',
-    serviceLabels: ['אתרי אינטרנט', 'אפליקציות', 'מערכות לעסקים', 'תוכנה', 'אוטומציות', 'AI'],
+    serviceLinks: [
+      { slug: 'websites', label: 'אתרים לעסקים' },
+      { slug: 'ecommerce', label: 'חנויות אונליין' },
+      { slug: 'automation', label: 'אוטומציה ו־AI' },
+    ],
     socialLabels: {
       email: 'Email',
       linkedIn: 'LinkedIn',

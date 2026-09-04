@@ -12,6 +12,7 @@ export const en = {
   navigation: {
     work: 'Work',
     services: 'Services',
+    guides: 'Guides',
     process: 'Process',
     about: 'About',
     contact: 'Contact',
@@ -220,7 +221,11 @@ export const en = {
     navigationTitle: 'Navigation',
     servicesTitle: 'Services',
     connectTitle: 'Connect',
-    serviceLabels: ['Websites', 'Applications', 'Business systems', 'Software', 'Automation', 'AI'],
+    serviceLinks: [
+      { slug: 'websites', label: 'Business websites' },
+      { slug: 'ecommerce', label: 'E-commerce' },
+      { slug: 'automation', label: 'Automation & AI' },
+    ],
     socialLabels: {
       email: 'Email',
       linkedIn: 'LinkedIn',

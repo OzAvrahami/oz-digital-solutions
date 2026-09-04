@@ -22,6 +22,11 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: 'swap',
 })
 
+const impactSiteVerification = {
+  name: 'impact-site-verification',
+  value: '7a3491ac-fb9c-427e-a0ab-1cdbed824e88',
+}
+
 interface LocaleLayoutProps {
   children: React.ReactNode
   params: Promise<{ locale: string }>
@@ -103,6 +108,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} dir={getDirection(locale)}>
+      <head>
+        <meta {...impactSiteVerification} />
+      </head>
       <body className={`${heebo.variable} ${ibmPlexMono.variable} bg-canvas font-heebo text-text antialiased`}>
         <PortfolioStructuredData />
         {children}

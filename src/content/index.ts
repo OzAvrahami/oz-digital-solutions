@@ -15,7 +15,7 @@ export const dictionaries = {
   en,
 } as const satisfies Record<'he' | 'en', SiteDictionary>
 
-export const navigationOrder = ['work', 'services', 'process', 'about', 'contact'] as const satisfies readonly NavigationKey[]
+export const navigationOrder = ['work', 'services', 'guides', 'process', 'about', 'contact'] as const satisfies readonly NavigationKey[]
 export const capabilityOrder = ['websites', 'businessSystems', 'applications', 'customSoftware', 'automation', 'integrations', 'ai'] as const satisfies readonly CapabilityKey[]
 export const serviceOrder = ['websites', 'businessSystems', 'applications', 'automation', 'ai'] as const satisfies readonly ServiceKey[]
 export const processOrder = ['understand', 'define', 'build', 'launch'] as const satisfies readonly ProcessKey[]
