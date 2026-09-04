@@ -16,7 +16,7 @@ export const recommendedProviders = {
   shopify: {
     name: 'Shopify',
     destinationUrl: 'https://www.shopify.com/',
-    affiliateUrl: null,
+    affiliateUrl: 'https://shopify.pxf.io/c/7728349/1061744/13624',
   },
   wix: {
     name: 'Wix',
@@ -26,7 +26,7 @@ export const recommendedProviders = {
   make: {
     name: 'Make',
     destinationUrl: 'https://www.make.com/',
-    affiliateUrl: null,
+    affiliateUrl: 'https://www.make.com/en/register?pc=ozdigital',
   },
   hostinger: {
     name: 'Hostinger',
