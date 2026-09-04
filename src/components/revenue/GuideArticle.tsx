@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
+import AffiliateDisclosure from '@/components/revenue/AffiliateDisclosure'
 import Breadcrumbs from '@/components/revenue/Breadcrumbs'
 import ProviderLink from '@/components/revenue/ProviderLink'
 import Container from '@/components/ui/Container'
@@ -79,6 +80,8 @@ export default function GuideArticle({ locale, dictionary, revenue, guide }: Gui
                 {guide.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
 
+              <AffiliateDisclosure locale={locale} />
+
               <div className="mt-12 space-y-12">
                 {guide.blocks.map((block, index) => {
                   if (block.type === 'section') {
@@ -149,7 +152,6 @@ export default function GuideArticle({ locale, dictionary, revenue, guide }: Gui
                             <ProviderLink key={provider} provider={provider} className="rounded-control border border-white/15 px-4 py-2 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent-light" />
                           ))}
                         </div>
-                        <p className="mt-5 text-[12px] leading-[1.65] text-text-quiet">{revenue.common.affiliateDisclosure}</p>
                       </aside>
                     )
                   }
