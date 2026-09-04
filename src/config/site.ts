@@ -7,6 +7,7 @@ interface ProjectLinkConfig {
 
 interface SiteConfig {
   productionSiteUrl: string
+  googleAnalyticsMeasurementId: string | null
   email: string | null
   linkedInUrl: string | null
   githubUrl: string | null
@@ -21,6 +22,7 @@ interface SiteConfig {
 
 export const siteConfig = {
   productionSiteUrl: 'https://ozavrahami.co.il',
+  googleAnalyticsMeasurementId: 'G-JCD3STPFZP',
   email: 'contact@ozavrahami.co.il',
   linkedInUrl: 'https://www.linkedin.com/in/oz-avrahami-b209584a/',
   githubUrl: 'https://github.com/OzAvrahami',
