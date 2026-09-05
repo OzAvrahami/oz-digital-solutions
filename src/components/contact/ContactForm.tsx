@@ -20,7 +20,7 @@ const initialResult: ContactFormResult = {
   message: '',
 }
 
-const fieldClassName = 'w-full rounded-control border border-white/10 bg-white/[0.03] px-4 py-[15px] text-base text-text placeholder:text-text-quiet focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent/25 disabled:cursor-not-allowed disabled:opacity-60'
+const fieldClassName = 'studio-form-field w-full rounded-[8px] border px-4 py-[15px] text-base focus:outline-none focus:ring-[3px] disabled:cursor-not-allowed disabled:opacity-60'
 
 export default function ContactForm({ locale, content }: ContactFormProps) {
   const [result, setResult] = useState<ContactFormResult>(initialResult)
@@ -54,15 +54,15 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
       <div
         role="status"
         aria-live="polite"
-        className="mx-auto mt-10 flex max-w-[560px] items-center gap-4 rounded-2xl border border-success/30 bg-success/[0.06] p-6 text-start desktop:p-10"
+        className="studio-form-success mx-auto mt-10 flex max-w-[560px] items-center gap-4 rounded-2xl border p-6 text-start desktop:p-10"
       >
         <span
           aria-hidden="true"
-          className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-success/15 text-[22px] text-success"
+          className="studio-form-success-icon inline-flex size-11 shrink-0 items-center justify-center rounded-full text-[22px]"
         >
           ✓
         </span>
-        <span className="text-[17px] font-medium text-[#dbe7e1]">{result.message}</span>
+        <span className="studio-form-success-message text-[17px] font-medium">{result.message}</span>
       </div>
     )
   }
@@ -73,7 +73,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="mx-auto mt-10 flex max-w-[560px] flex-col gap-5 text-start"
+      className="studio-contact-form-fields mx-auto mt-10 flex max-w-[560px] flex-col gap-5 text-start"
     >
       <div aria-hidden="true" className="sr-only">
         <label htmlFor={`website-${locale}`}>Website</label>
@@ -89,14 +89,14 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
       {result.status === 'error' ? (
         <p
           role="alert"
-          className="rounded-control border border-danger/30 bg-danger/[0.07] px-4 py-3 text-sm text-[#ffd8cc]"
+          className="studio-form-alert rounded-[8px] border px-4 py-3 text-sm"
         >
           {result.message}
         </p>
       ) : null}
 
       <div className="flex flex-col gap-[9px]">
-        <label htmlFor={`contact-name-${locale}`} className="text-sm font-medium text-[#c4c9d2]">
+        <label htmlFor={`contact-name-${locale}`} className="studio-form-label text-sm font-medium">
           {content.nameLabel}
         </label>
         <input
@@ -112,14 +112,14 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
           className={fieldClassName}
         />
         {errorFor('name') ? (
-          <p id={`contact-name-error-${locale}`} className="text-sm text-danger">
+          <p id={`contact-name-error-${locale}`} className="studio-form-error text-sm">
             {errorFor('name')}
           </p>
         ) : null}
       </div>
 
       <div className="flex flex-col gap-[9px]">
-        <label htmlFor={`contact-details-${locale}`} className="text-sm font-medium text-[#c4c9d2]">
+        <label htmlFor={`contact-details-${locale}`} className="studio-form-label text-sm font-medium">
           {content.contactLabel}
         </label>
         <input
@@ -136,14 +136,14 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
           className={fieldClassName}
         />
         {errorFor('contact') ? (
-          <p id={`contact-details-error-${locale}`} className="text-sm text-danger">
+          <p id={`contact-details-error-${locale}`} className="studio-form-error text-sm">
             {errorFor('contact')}
           </p>
         ) : null}
       </div>
 
       <div className="flex flex-col gap-[9px]">
-        <label htmlFor={`contact-message-${locale}`} className="text-sm font-medium text-[#c4c9d2]">
+        <label htmlFor={`contact-message-${locale}`} className="studio-form-label text-sm font-medium">
           {content.messageLabel}
         </label>
         <textarea
@@ -159,7 +159,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
           className={`${fieldClassName} min-h-[120px] resize-y leading-[1.5]`}
         />
         {errorFor('message') ? (
-          <p id={`contact-message-error-${locale}`} className="text-sm text-danger">
+          <p id={`contact-message-error-${locale}`} className="studio-form-error text-sm">
             {errorFor('message')}
           </p>
         ) : null}
@@ -168,7 +168,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-control bg-accent px-6 py-4 text-[16.5px] font-semibold text-white shadow-accent transition-colors hover:bg-accent-hover disabled:cursor-wait disabled:opacity-70"
+        className="studio-form-submit inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-[16.5px] font-semibold text-white transition-colors disabled:cursor-wait disabled:opacity-70"
       >
         {pending ? (
           <span className="size-4 animate-spin rounded-full border-2 border-white/35 border-t-white" aria-hidden="true" />
@@ -176,7 +176,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
         {pending ? content.pendingLabel : content.submitLabel}
       </button>
 
-      <p aria-live="polite" className="text-center text-[13.5px] text-text-muted">
+      <p aria-live="polite" className="studio-form-reassurance text-center text-[13.5px]">
         {pending ? content.pendingLabel : content.reassurance}
       </p>
     </form>

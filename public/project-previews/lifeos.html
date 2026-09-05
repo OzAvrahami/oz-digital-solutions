@@ -1,0 +1,263 @@
+<!doctype html><html lang="he"><head><meta charset="utf-8"><meta name="viewport" content="width=402"><title>LifeOS.dc.html — project screen</title>
+<meta name="design_doc_mode" content="canvas">
+
+
+<style>/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f9805e7a16e108bc.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/5e2544c15529ea4e.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/26b77cc3179a17ab.woff2") format("woff2");}
+</style>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Assistant', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: #E6E2D9; }
+  :root { --ac: #2F8F86; --ac-weak: #E4F1EF; }
+  a { color: var(--ac); text-decoration: none; }
+  a:hover { color: #23211C; }
+  bdi, .num { unicode-bidi: isolate; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes lifeos-pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.82); } }
+  @keyframes lifeos-spin { to { transform: rotate(360deg); } }
+</style>
+<style>html,body{margin:0;padding:0;width:402px;min-height:856px;overflow:hidden;--ac:#2F8F86;--ac-weak:#E4F1EF;}*{box-sizing:border-box}body{pointer-events:none}#reference-canvas{width:402px;min-height:856px;}button,input,select,textarea{font-family:inherit}a{cursor:default}svg{flex-shrink:0}</style></head><body><div id="reference-canvas"><div style="width:402px;padding:6px;background:#141310;border-radius:52px;box-shadow:0 26px 60px -22px rgba(30,25,15,.4);">
+        <div style="position:relative;width:390px;height:844px;background:#F4F1EA;border-radius:46px;overflow:hidden;">
+          <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:118px;height:33px;background:#000;border-radius:20px;z-index:8;"></div>
+          <div style="height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:15px;font-weight:700;">
+            <span ><bdi >9:41</bdi></span>
+            <span style="display:flex;align-items:center;gap:6px;"><span style="display:flex;align-items:flex-end;gap:2px;"><i style="width:3px;height:5px;background:#23211C;border-radius:1px;"></i><i style="width:3px;height:7px;background:#23211C;border-radius:1px;"></i><i style="width:3px;height:9px;background:#23211C;border-radius:1px;"></i><i style="width:3px;height:11px;background:#23211C;border-radius:1px;"></i></span><span style="width:24px;height:12px;border:1.3px solid #23211C;border-radius:3px;padding:1.5px;"><span style="display:block;width:72%;height:100%;background:#23211C;border-radius:1px;"></span></span></span>
+          </div>
+          <div style="height:756px;overflow:hidden;padding:8px 22px 0;">
+            <div style="font-size:15px;color:#8C8577;font-weight:600;">בוקר טוב, עוז</div>
+            <div style="font-size:28px;font-weight:800;margin-top:2px;">שבת, 8 באוגוסט</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;">
+              <span style="font-size:13px;color:#6E6A60;">4 משימות</span><span style="color:#CFC8BA;">·</span>
+              <span style="font-size:13px;color:#6E6A60;">2 פגישות</span><span style="color:#CFC8BA;">·</span>
+              <span style="font-size:13px;color:#6E6A60;"><bdi >3:20</bdi> שעות</span>
+              <span style="margin-inline-start:auto;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:#E4F1EF;color:#2A7D75;">מאוזן</span>
+            </div>
+
+            <div style="background:var(--ac-weak);border-radius:20px;padding:17px;margin-top:16px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="width:9px;height:9px;border-radius:50%;background:var(--ac);animation:lifeos-pulse 2.4s ease-in-out infinite;"></span>
+                <span style="font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--ac);">עכשיו</span>
+              </div>
+              <div style="font-size:20px;font-weight:700;margin-top:10px;">לעבוד על <bdi >LifeOS</bdi></div>
+              <div style="font-size:14px;color:#6E6A60;margin-top:5px;">כ־60 דקות · עבודה</div>
+              <button style="margin-top:14px;width:100%;height:46px;background:var(--ac);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;font-family:inherit;" type="button">התחלה</button>
+            </div>
+
+            <div style="font-size:13px;font-weight:800;letter-spacing:.04em;color:#8C8577;margin:22px 0 4px;">התחייבויות</div>
+            <div style="position:relative;padding-inline-start:16px;">
+              <div style="position:absolute;top:8px;bottom:8px;right:4px;width:2px;background:#E7E1D5;"></div>
+              <div style="display:flex;align-items:center;gap:14px;padding:9px 0;">
+                <span style="position:absolute;right:0px;width:9px;height:9px;border-radius:50%;background:#C08457;border:2px solid #F4F1EA;"></span>
+                <span style="font-size:14px;font-weight:700;color:#3A382F;"><bdi >13:30</bdi></span>
+                <span style="font-size:15px;">איסוף הילדים</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:9px 0;">
+                <span style="position:absolute;right:0px;width:9px;height:9px;border-radius:50%;background:#3E7C93;border:2px solid #F4F1EA;"></span>
+                <span style="font-size:14px;font-weight:700;color:#3A382F;"><bdi >17:00</bdi></span>
+                <span style="font-size:15px;">פגישה עם דני</span>
+              </div>
+            </div>
+
+            <div style="font-size:13px;font-weight:800;letter-spacing:.04em;color:#8C8577;margin:20px 0 8px;">המשימות שלי</div>
+            <div style="background:#FBF9F3;border-radius:18px;padding:4px 16px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #F0EBE0;">
+                <span style="width:22px;height:22px;border-radius:50%;border:1.75px solid #C9C3B5;flex:0 0 auto;"></span>
+                <span style="flex:1;font-size:15px;font-weight:500;">לעבוד על <bdi >LifeOS</bdi></span>
+                <i style="width:8px;height:8px;border-radius:50%;background:#3E7C93;"></i>
+                <span style="font-size:13px;color:#9A9488;">60 דק׳</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #F0EBE0;">
+                <span style="width:22px;height:22px;border-radius:50%;border:1.75px solid #C9C3B5;flex:0 0 auto;"></span>
+                <span style="flex:1;font-size:15px;font-weight:500;">להתקשר לספק</span>
+                <i style="width:8px;height:8px;border-radius:50%;background:#3E7C93;"></i>
+                <span style="font-size:13px;color:#9A9488;">15 דק׳</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 0;">
+                <span style="width:22px;height:22px;border-radius:50%;border:1.75px solid #C9C3B5;flex:0 0 auto;"></span>
+                <span style="flex:1;font-size:15px;font-weight:500;">לסדר משהו בבית</span>
+                <i style="width:8px;height:8px;border-radius:50%;background:#B79A3E;"></i>
+                <span style="font-size:13px;color:#9A9488;">30 דק׳</span>
+              </div>
+            </div>
+            <button style="margin-top:12px;background:transparent;border:none;color:var(--ac);font-size:15px;font-weight:700;font-family:inherit;padding:4px;" type="button">+ הוסף משימה</button>
+
+            
+            <div style="font-size:13px;font-weight:800;letter-spacing:.04em;color:#8C8577;margin:16px 0 8px;">אפשר להוסיף להיום</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;gap:12px;background:#EFEBE1;border-radius:14px;padding:12px 14px;">
+                <span style="flex:1;font-size:14px;color:#5A574D;">משימה חשובה מהשבוע · להכין הצעת מחיר</span>
+                <span style="width:28px;height:28px;border-radius:50%;background:#FBF9F3;display:flex;align-items:center;justify-content:center;color:var(--ac);font-weight:800;">+</span>
+              </div>
+            </div>
+            
+          </div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:86px;background:#FBF9F3;border-top:1px solid #ECE7DC;display:flex;justify-content:space-around;align-items:flex-start;padding:11px 16px 0;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ac);"><svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="2"></circle><circle cx="12" cy="12" r="2.4" fill="currentColor"></circle></svg><span style="font-size:11px;font-weight:700;">היום</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#A8A296;"><svg width="24" height="24" fill="none"><rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="2"></rect><line x1="4" y1="9.5" x2="20" y2="9.5" stroke="currentColor" stroke-width="2"></line></svg><span style="font-size:11px;font-weight:600;">שבוע</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;"><span style="width:54px;height:54px;border-radius:50%;background:var(--ac);margin-top:-20px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -4px rgba(47,143,134,.6);"><svg width="26" height="26"><line x1="13" y1="6" x2="13" y2="20" stroke="#fff" stroke-width="2.6" stroke-linecap="round"></line><line x1="6" y1="13" x2="20" y2="13" stroke="#fff" stroke-width="2.6" stroke-linecap="round"></line></svg></span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#A8A296;"><svg width="24" height="24" fill="none"><path d="M4 6h16v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6z" stroke="currentColor" stroke-width="2"></path><path d="M4 12h4l1.5 2.5h5L16 12h4" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg><span style="font-size:11px;font-weight:600;"><bdi >Inbox</bdi></span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#A8A296;"><svg width="24" height="24" fill="none"><circle cx="6" cy="12" r="1.9" fill="currentColor"></circle><circle cx="12" cy="12" r="1.9" fill="currentColor"></circle><circle cx="18" cy="12" r="1.9" fill="currentColor"></circle></svg><span style="font-size:11px;font-weight:600;">עוד</span></div>
+          </div>
+        </div>
+      </div></div></body></html>

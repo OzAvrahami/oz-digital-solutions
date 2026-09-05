@@ -107,7 +107,7 @@ export default function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen(true)}
-        className="inline-flex size-11 items-center justify-center rounded-[10px] border border-white/15 text-text lg:hidden"
+        className="studio-menu-trigger inline-flex size-11 items-center justify-center rounded-[10px] border lg:hidden"
       >
         <span className="relative block h-3.5 w-[18px]" aria-hidden="true">
           <span className="absolute inset-x-0 top-0 h-0.5 bg-current" />
@@ -123,31 +123,31 @@ export default function MobileMenu({
           role="dialog"
           aria-modal="true"
           aria-label={labels.menuLabel}
-          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-section/95 px-[22px] pb-10 pt-5 backdrop-blur-xl lg:hidden"
+          className="studio-mobile-menu fixed inset-0 z-[70] flex flex-col overflow-y-auto px-[22px] pb-10 pt-5 lg:hidden"
         >
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-[11px] text-lg font-bold text-text">
-              <span className="size-[9px] rounded-full bg-accent shadow-[0_0_16px_rgba(77,125,255,0.7)]" aria-hidden="true" />
-              {identityName}
+            <span className="studio-menu-brand flex items-center gap-3">
+              <span className="studio-brand-mark" dir="ltr" aria-hidden="true">oz<span>.</span></span>
+              <span>{identityName}</span>
             </span>
             <button
               ref={closeRef}
               type="button"
               aria-label={labels.closeMenuLabel}
               onClick={closeMenu}
-              className="inline-flex size-11 items-center justify-center rounded-[10px] border border-white/15 text-xl text-text"
+              className="studio-menu-close inline-flex size-11 items-center justify-center rounded-[10px] border text-xl"
             >
               <span aria-hidden="true">×</span>
             </button>
           </div>
 
-          <nav aria-label={labels.menuLabel} className="mt-9 flex flex-col">
+          <nav aria-label={labels.menuLabel} className="studio-mobile-nav mt-9 flex flex-col">
             {navigationItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
                 onClick={closeMenu}
-                className="border-b border-white/[0.07] py-[13px] text-[26px] font-bold text-text"
+                className="border-b py-[13px] text-[26px] font-semibold"
               >
                 {item.label}
               </Link>
@@ -157,12 +157,12 @@ export default function MobileMenu({
           <ButtonLink
             href={contactHref}
             onClick={closeMenu}
-            className="mt-7 w-full py-[17px] text-[17px]"
+            className="studio-mobile-cta mt-7 w-full py-[17px] text-[17px]"
           >
             {primaryCta}
           </ButtonLink>
 
-          <div className="mt-6">
+          <div className="studio-mobile-language mt-6">
             <LanguageSwitcher
               locale={locale}
               labels={labels}

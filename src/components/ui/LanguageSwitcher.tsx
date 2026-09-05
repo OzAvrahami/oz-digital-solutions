@@ -47,20 +47,20 @@ export default function LanguageSwitcher({
     <div
       role="group"
       aria-label={labels.languageLabel}
-      className="flex items-center gap-2 font-mono text-sm"
+      className="site-language-switcher flex items-center gap-2 font-mono text-sm"
     >
       {options.map((option, index) => (
         <span key={option.locale} className="contents">
-          {index > 0 ? <span aria-hidden="true" className="text-white/20">/</span> : null}
+          {index > 0 ? <span aria-hidden="true" className="site-language-separator">/</span> : null}
           {option.locale === locale ? (
-            <span aria-current="page" className="font-semibold text-text">
+            <span aria-current="page" className="site-language-active font-semibold">
               {option.label}
             </span>
           ) : (
             <Link
               href={`/${option.locale}${pathname.replace(/^\/(he|en)/, '')}${currentHash}`}
               onClick={onNavigate}
-              className="rounded text-text-quiet transition-colors hover:text-text focus-visible:text-text"
+              className="site-language-link rounded transition-colors"
               hrefLang={option.locale}
             >
               {option.label}

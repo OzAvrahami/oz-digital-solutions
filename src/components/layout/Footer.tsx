@@ -31,26 +31,23 @@ export default function Footer({ locale, dictionary }: FooterProps) {
   ]
 
   return (
-    <footer className="border-t border-white/[0.06] bg-section">
+    <footer className="studio-footer">
       <Container className="grid gap-12 py-14 desktop:grid-cols-[1.6fr_1fr_1fr_1fr] desktop:pb-10 desktop:pt-[72px]">
         <div>
           <Link
             href={`/${locale}#top`}
-            className="mb-[18px] inline-flex items-center gap-[11px] rounded-md text-lg font-bold text-text"
+            className="studio-footer-brand mb-[18px] inline-flex items-center gap-3"
           >
-            <span
-              aria-hidden="true"
-              className="size-[9px] rounded-full bg-accent shadow-[0_0_16px_rgba(77,125,255,0.7)]"
-            />
-            {dictionary.identity.name}
+            <span className="studio-brand-mark" dir="ltr" aria-hidden="true">oz<span>.</span></span>
+            <span>{dictionary.identity.name}</span>
           </Link>
-          <p className="max-w-[300px] text-[15px] leading-[1.6] text-text-muted">
+          <p className="studio-footer-positioning max-w-[300px] text-[15px] leading-[1.7]">
             {dictionary.footer.positioning}
           </p>
         </div>
 
         <nav aria-label={dictionary.footer.navigationTitle}>
-          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+          <h2 className="studio-footer-heading mb-4 font-mono text-[11px] tracking-[0.08em]">
             {dictionary.footer.navigationTitle}
           </h2>
           <ul className="flex flex-col gap-[11px]">
@@ -58,7 +55,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
               <li key={key}>
                 <Link
                   href={key === 'guides' ? `/${locale}/guides` : `/${locale}#${key}`}
-                  className="rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                  className="studio-footer-link rounded text-[14.5px] transition-colors"
                 >
                   {dictionary.navigation[key]}
                 </Link>
@@ -68,7 +65,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
         </nav>
 
         <div>
-          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+          <h2 className="studio-footer-heading mb-4 font-mono text-[11px] tracking-[0.08em]">
             {dictionary.footer.servicesTitle}
           </h2>
           <ul className="flex flex-col gap-[11px]">
@@ -76,7 +73,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
               <li key={service.slug}>
                 <Link
                   href={`/${locale}/services/${service.slug}`}
-                  className="rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                  className="studio-footer-link rounded text-[14.5px] transition-colors"
                 >
                   {service.label}
                 </Link>
@@ -86,7 +83,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
         </div>
 
         <div>
-          <h2 className="mb-4 font-mono text-[11px] tracking-[0.08em] text-text-quiet">
+          <h2 className="studio-footer-heading mb-4 font-mono text-[11px] tracking-[0.08em]">
             {dictionary.footer.connectTitle}
           </h2>
           <ul className="mb-5 flex flex-col gap-[11px]">
@@ -96,7 +93,7 @@ export default function Footer({ locale, dictionary }: FooterProps) {
                   href={link.href}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
-                  className="break-words rounded text-[14.5px] text-text-secondary transition-colors hover:text-text"
+                  className="studio-footer-link break-words rounded text-[14.5px] transition-colors"
                 >
                   {dictionary.footer.socialLabels[link.key]}
                 </a>
@@ -107,9 +104,9 @@ export default function Footer({ locale, dictionary }: FooterProps) {
         </div>
       </Container>
 
-      <div className="border-t border-white/[0.06]">
+      <div className="studio-footer-bottom border-t">
         <Container className="py-6">
-          <p className="text-[13px] text-text-quiet">{dictionary.footer.copyright}</p>
+          <p className="studio-footer-copyright text-[13px]">{dictionary.footer.copyright}</p>
         </Container>
       </div>
     </footer>

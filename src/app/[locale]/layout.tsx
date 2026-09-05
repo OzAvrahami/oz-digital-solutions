@@ -8,6 +8,7 @@ import { getSiteUrl, siteConfig } from '@/config/site'
 import { getDictionary, getDirection, isLocale, locales } from '@/lib/i18n'
 
 import '../globals.css'
+import '../../components/studio/studio.css'
 
 const heebo = Heebo({
   subsets: ['hebrew', 'latin'],

@@ -1,0 +1,980 @@
+<!doctype html><html lang="he"><head><meta charset="utf-8"><meta name="viewport" content="width=1440"><title>Finance v3.dc.html — project screen</title>
+
+
+<style>/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+/* hebrew */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+src:url("./fonts/f1f7cfaef59431c7.woff2") format("woff2");}
+/* math */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+src:url("./fonts/75dd1921c5eb014d.woff2") format("woff2");}
+/* symbols */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+src:url("./fonts/2fd251daf4ac2cc7.woff2") format("woff2");}
+/* latin-ext */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+src:url("./fonts/dd3af41d4eac7f8b.woff2") format("woff2");}
+/* latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+src:url("./fonts/50dae2e12dae22c9.woff2") format("woff2");}
+</style>
+
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#05070f}
+  a{color:var(--primary-2);text-decoration:none}
+  a:hover{color:var(--primary);text-decoration:underline}
+  [data-theme="dark"]{
+    --bg:#06080f; --bg-2:#080b16;
+    --aurora-1:rgba(124,58,237,.30); --aurora-2:rgba(34,211,238,.20); --aurora-3:rgba(52,211,153,.13); --aurora-4:rgba(96,165,250,.16);
+    --glass:rgba(255,255,255,.045); --glass-2:rgba(255,255,255,.075); --glass-3:rgba(255,255,255,.11);
+    --glass-solid:#0e1322; --glass-solid-2:#141a2c;
+    --border:rgba(255,255,255,.085); --border-strong:rgba(255,255,255,.16);
+    --text:#eef1fb; --text-muted:#98a1bf; --text-faint:#5f6889;
+    --primary:#8b5cf6; --primary-2:#a78bfa; --primary-strong:#7c3aed; --primary-weak:rgba(139,92,246,.16); --primary-border:rgba(139,92,246,.36);
+    --cyan:#22d3ee; --mint:#34d399; --amber:#fbbf24; --blue:#60a5fa; --rose:#fb7185;
+    --income:#34d399; --income-weak:rgba(52,211,153,.14); --income-border:rgba(52,211,153,.3);
+    --expense:#fb7185; --expense-weak:rgba(251,113,133,.14); --expense-border:rgba(251,113,133,.3);
+    --warning:#fbbf24; --warning-weak:rgba(251,191,36,.14); --warning-border:rgba(251,191,36,.3);
+    --uncat:#8b95b5; --uncat-weak:rgba(139,149,181,.14); --uncat-border:rgba(139,149,181,.28);
+    --track:rgba(255,255,255,.09);
+    --shadow:0 2px 6px rgba(0,0,0,.4), 0 24px 60px -28px rgba(0,0,0,.85);
+    --shadow-lg:0 30px 80px -20px rgba(0,0,0,.8);
+    --focus:rgba(167,139,250,.55);
+    --on-primary:#fff;
+    --blur:blur(22px) saturate(1.5);
+    --skeleton:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.10) 37%,rgba(255,255,255,.04) 63%);
+  }
+  [data-theme="light"]{
+    --bg:#f3f2f9; --bg-2:#eeedf6;
+    --aurora-1:rgba(124,58,237,.16); --aurora-2:rgba(34,211,238,.13); --aurora-3:rgba(52,211,153,.1); --aurora-4:rgba(96,165,250,.13);
+    --glass:rgba(255,255,255,.72); --glass-2:rgba(255,255,255,.88); --glass-3:#ffffff;
+    --glass-solid:#ffffff; --glass-solid-2:#f7f7fc;
+    --border:rgba(28,27,60,.07); --border-strong:rgba(28,27,60,.13);
+    --text:#16182a; --text-muted:#5b6178; --text-faint:#98a0b5;
+    --primary:#7c3aed; --primary-2:#8b5cf6; --primary-strong:#6d28d9; --primary-weak:rgba(124,58,237,.1); --primary-border:rgba(124,58,237,.22);
+    --cyan:#0891b2; --mint:#059669; --amber:#d97706; --blue:#2563eb; --rose:#e11d6f;
+    --income:#0f9d6a; --income-weak:rgba(15,157,106,.1); --income-border:rgba(15,157,106,.24);
+    --expense:#e0436b; --expense-weak:rgba(224,67,107,.1); --expense-border:rgba(224,67,107,.24);
+    --warning:#b8730a; --warning-weak:rgba(212,136,12,.12); --warning-border:rgba(212,136,12,.26);
+    --uncat:#6b7488; --uncat-weak:rgba(107,116,136,.1); --uncat-border:rgba(107,116,136,.22);
+    --track:rgba(28,27,60,.08);
+    --shadow:0 1px 3px rgba(20,22,55,.05), 0 18px 40px -22px rgba(20,22,55,.22);
+    --shadow-lg:0 30px 70px -25px rgba(20,22,55,.3);
+    --focus:rgba(124,58,237,.4);
+    --on-primary:#fff;
+    --blur:blur(18px) saturate(1.3);
+    --skeleton:linear-gradient(90deg,rgba(28,27,60,.05) 25%,rgba(28,27,60,.10) 37%,rgba(28,27,60,.05) 63%);
+  }
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:8px;border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-track{background:transparent}
+  :focus-visible{outline:2px solid var(--primary-2);outline-offset:2px}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  @keyframes auroraFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4%,3%) scale(1.08)}66%{transform:translate(-3%,2%) scale(.96)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes sheetIn{from{transform:translateY(100%)}to{transform:none}}
+  @keyframes overlayIn{from{opacity:0}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}}
+</style>
+<style>html,body{margin:0;padding:0;width:1440px;min-height:960px;overflow:hidden;}*{box-sizing:border-box}body{pointer-events:none}#reference-canvas{width:1440px;min-height:960px;}button,input,select,textarea{font-family:inherit}a{cursor:default}svg{flex-shrink:0}</style></head><body><div id="reference-canvas">
+
+<div dir="rtl" data-theme="dark" style="font-family:'Heebo',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;position:relative;overflow-x:hidden;font-feature-settings:'tnum';-webkit-font-smoothing:antialiased">
+
+  <div style="position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+    <div style="position:absolute;top:-18%;inset-inline-end:-8%;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,var(--aurora-1),transparent 62%);filter:blur(34px);animation:auroraFloat 22s ease-in-out infinite"></div>
+    <div style="position:absolute;top:18%;inset-inline-start:-12%;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,var(--aurora-2),transparent 62%);filter:blur(34px);animation:auroraFloat 26s ease-in-out infinite reverse"></div>
+    <div style="position:absolute;bottom:-22%;inset-inline-start:24%;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,var(--aurora-3),transparent 62%);filter:blur(38px);animation:auroraFloat 30s ease-in-out infinite"></div>
+    <div style="position:absolute;top:42%;inset-inline-end:26%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--aurora-4),transparent 64%);filter:blur(40px);animation:auroraFloat 24s ease-in-out infinite reverse"></div>
+  </div>
+
+  
+  
+
+  
+  
+  <div style="position:relative;z-index:1;display:flex;min-height:100vh">
+
+    <aside style="width:258px;flex-shrink:0;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:18px 14px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border-inline-start:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 10px 18px">
+        <div style="width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,var(--primary-2),var(--primary-strong));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -4px rgba(124,58,237,.6);color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div>
+        <div style="line-height:1.15">
+          <div style="font-weight:800;font-size:19px;letter-spacing:-.01em">פיננסים.</div>
+          <div style="font-size:11px;color:var(--text-faint);font-weight:600">ניהול כספים אישי</div>
+        </div>
+      </div>
+
+      <nav aria-label="ניווט ראשי" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:2px;padding:2px 0">
+        
+          <a href="#" aria-current="page" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:none;background:var(--primary-weak);color:var(--primary-2);border:1px solid var(--primary-border)">
+            
+              <span style="position:absolute;inset-inline-start:0;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:3px;background:linear-gradient(var(--primary-2),var(--cyan));box-shadow:0 0 10px var(--primary)"></span>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            <span style="flex:1">לוח בקרה</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+            <span style="flex:1">תנועות</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>
+            <span style="flex:1">תקציב חודשי</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M17 14h-6"/><path d="M13 18H7"/><path d="M7 14h.01"/><path d="M17 18h.01"/></svg>
+            <span style="flex:1">סיכום שנתי</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
+            <span style="flex:1">הלוואות</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            <span style="flex:1">רשימות קניות</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg>
+            <span style="flex:1">מטלות</span>
+            
+              <span style="min-width:20px;height:20px;padding:0 6px;border-radius:7px;background:var(--warning-weak);border:1px solid var(--warning-border);color:var(--warning);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">3</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M12 12v6"/><path d="m15 15-3-3-3 3"/></svg>
+            <span style="flex:1">ייבוא תנועות</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2"/><rect x="14" y="2" width="8" height="8" rx="1"/></svg>
+            <span style="flex:1">אוסף לגו</span>
+            
+          </a>
+        
+          <a href="#" aria-current="" style="position:relative;display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;background:transparent;color:var(--text-muted);border:1px solid transparent">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+            <span style="flex:1">הגדרות</span>
+            
+          </a>
+        
+
+      </nav>
+
+      <div style="margin-top:8px;padding:9px;border-radius:16px;background:var(--glass-2);border:1px solid var(--border);display:flex;align-items:center;gap:11px">
+        <div style="width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0">ד</div>
+        <div style="flex:1;line-height:1.25;min-width:0">
+          <div style="font-weight:700;font-size:13.5px">דניאל כהן</div>
+          <div dir="ltr" style="font-size:11px;color:var(--text-faint);text-align:start;unicode-bidi:isolate;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">daniel@example.com</div>
+        </div>
+        <button aria-label="התנתקות" title="התנתקות" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:11px;background:transparent;color:var(--text-faint);cursor:pointer" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></button>
+      </div>
+    </aside>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:14px;padding:15px 30px;background:color-mix(in srgb,var(--bg) 62%, transparent);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border-bottom:1px solid var(--border)">
+        <div style="min-width:0">
+          <h1 style="font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0">לוח בקרה</h1>
+          <div style="font-size:12.5px;color:var(--text-muted);margin-top:3px">תמונת מצב לפי תקופות — חודש נבחר, מגמה של חצי שנה ונתונים נכון להיום</div>
+        </div>
+        <div style="flex:1"></div>
+        <button aria-label="החלפת ערכת נושא" title="מעבר לערכה בהירה" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass);border:1px solid var(--border);border-radius:13px;cursor:pointer;color:var(--text-muted);backdrop-filter:var(--blur)" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button>
+        
+          <button style="display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--primary-2),var(--primary-strong));color:#fff;border:0;border-radius:13px;padding:10px 17px;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px -6px rgba(124,58,237,.65)" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M5 12h14"/><path d="M12 5v14"/></svg>תנועה חדשה</button>
+        
+      </header>
+
+      <main style="flex:1;padding:24px 30px 70px">
+        <div style="max-width:1280px;margin:0 auto">
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+          <div >
+            
+
+            
+            <div style="display:flex;flex-direction:column;gap:18px">
+
+              <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+                  <div >
+                    <div style="font-size:15.5px;font-weight:700">החודש הנבחר</div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-top:2px">שלושת המדדים האלה — ורק הם — מתייחסים לחודש שנבחר כאן.</div>
+                  </div>
+                  <div style="flex:1"></div>
+                  <div style="display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:13px;padding:5px;background:var(--glass-2)">
+                    <button aria-label="חודש קודם" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:0;border-radius:10px;background:transparent;color:var(--text-muted);cursor:pointer" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="m9 18 6-6-6-6"/></svg></button>
+                    <div style="min-width:104px;text-align:center;font-size:13.5px;font-weight:700">אוגוסט 2026</div>
+                    <button aria-label="חודש הבא" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:0;border-radius:10px;background:transparent;color:var(--text-muted);cursor:pointer" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="m15 18-6-6 6-6"/></svg></button>
+                  </div>
+                </div>
+                
+                
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+                    
+                      <div style="border-radius:18px;padding:18px;background:var(--glass-2);border:1px solid var(--border)">
+                        <div style="display:flex;align-items:center;gap:9px">
+                          <span style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--income) 16%, transparent);color:var(--income)"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
+                          <div style="font-size:13px;color:var(--text-muted);font-weight:600">הכנסות</div>
+                        </div>
+                        <div dir="ltr" style="unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:27px;color:var(--income);margin:12px 0 4px">+₪18,450</div>
+                        <div style="font-size:11.5px;color:var(--text-faint)">סך ההכנסות שנרשמו בחודש</div>
+                      </div>
+                    
+                      <div style="border-radius:18px;padding:18px;background:var(--glass-2);border:1px solid var(--border)">
+                        <div style="display:flex;align-items:center;gap:9px">
+                          <span style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--expense) 16%, transparent);color:var(--expense)"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M16 17h6v-6"/><path d="m22 17-8.5-8.5-5 5L2 7"/></svg></span>
+                          <div style="font-size:13px;color:var(--text-muted);font-weight:600">הוצאות</div>
+                        </div>
+                        <div dir="ltr" style="unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:27px;color:var(--expense);margin:12px 0 4px">−₪13,286</div>
+                        <div style="font-size:11.5px;color:var(--text-faint)">סך ההוצאות שנרשמו בחודש</div>
+                      </div>
+                    
+                      <div style="border-radius:18px;padding:18px;background:var(--glass-2);border:1px solid var(--border)">
+                        <div style="display:flex;align-items:center;gap:9px">
+                          <span style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--income) 16%, transparent);color:var(--income)"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span>
+                          <div style="font-size:13px;color:var(--text-muted);font-weight:600">מאזן החודש</div>
+                        </div>
+                        <div dir="ltr" style="unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:27px;color:var(--income);margin:12px 0 4px">+₪5,164</div>
+                        <div style="font-size:11.5px;color:var(--text-faint)">הכנסות פחות הוצאות בחודש הנבחר</div>
+                      </div>
+                    
+                  </div>
+                
+              </div>
+
+              <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:18px;align-items:start">
+                <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                  <div style="display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap">
+                    <div ><div style="font-size:15.5px;font-weight:700">הכנסות והוצאות</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">ששת החודשים האחרונים</div></div>
+                    <div style="flex:1"></div>
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-faint)"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M17 14h-6"/><path d="M13 18H7"/><path d="M7 14h.01"/><path d="M17 18h.01"/></svg>תקופה נפרדת · לא לפי החודש הנבחר</span>
+                  </div>
+                  <div style="display:flex;gap:16px;margin-top:12px">
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--text-muted)"><span style="width:9px;height:9px;border-radius:3px;background:var(--income)"></span>הכנסות</span>
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--text-muted)"><span style="width:9px;height:9px;border-radius:3px;background:var(--primary-2)"></span>הוצאות</span>
+                  </div>
+                  
+                  
+                  
+                    <div style="display:flex;align-items:flex-end;gap:0;height:190px;margin-top:14px;border-bottom:1px solid var(--border)">
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪17,200" style="width:13px;border-radius:6px 6px 0 0;height:86%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪14,100" style="width:13px;border-radius:6px 6px 0 0;height:71%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪18,450" style="width:13px;border-radius:6px 6px 0 0;height:92%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪12,980" style="width:13px;border-radius:6px 6px 0 0;height:65%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪17,600" style="width:13px;border-radius:6px 6px 0 0;height:88%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪16,240" style="width:13px;border-radius:6px 6px 0 0;height:81%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪18,450" style="width:13px;border-radius:6px 6px 0 0;height:92%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪12,040" style="width:13px;border-radius:6px 6px 0 0;height:60%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪17,980" style="width:13px;border-radius:6px 6px 0 0;height:90%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪15,120" style="width:13px;border-radius:6px 6px 0 0;height:76%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                        <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px">
+                          <div style="display:flex;align-items:flex-end;gap:5px;height:100%;width:100%;justify-content:center">
+                            <div title="+₪18,450" style="width:13px;border-radius:6px 6px 0 0;height:92%;background:linear-gradient(180deg,var(--income),color-mix(in srgb,var(--income) 45%, transparent))"></div>
+                            <div title="−₪13,286" style="width:13px;border-radius:6px 6px 0 0;height:66%;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--primary-2) 40%, transparent))"></div>
+                          </div>
+                        </div>
+                      
+                    </div>
+                    <div style="display:flex;margin-top:8px">
+                      <div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:600;color:var(--text-faint)">מרץ</span></div><div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:600;color:var(--text-faint)">אפריל</span></div><div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:600;color:var(--text-faint)">מאי</span></div><div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:600;color:var(--text-faint)">יוני</span></div><div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:600;color:var(--text-faint)">יולי</span></div><div style="flex:1;text-align:center"><span style="font-size:11px;font-weight:800;color:var(--text)">אוגוסט</span></div>
+                    </div>
+                  
+                </div>
+
+                <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                  <div style="display:flex;align-items:flex-start;gap:10px">
+                    <div ><div style="font-size:15.5px;font-weight:700">מטלות</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">שלוש המטלות הדחופות</div></div>
+                    <div style="flex:1"></div>
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-faint)">נכון להיום</span>
+                  </div>
+                  <div style="display:flex;gap:10px;margin-top:14px">
+                    <div style="flex:1;border-radius:14px;padding:12px;background:var(--glass-2);border:1px solid var(--border)"><div dir="ltr" style="font-size:22px;font-weight:800;text-align:start;unicode-bidi:isolate">7</div><div style="font-size:11.5px;color:var(--text-muted);font-weight:600">פתוחות</div></div>
+                    <div style="flex:1;border-radius:14px;padding:12px;background:var(--expense-weak);border:1px solid var(--expense-border)"><div dir="ltr" style="font-size:22px;font-weight:800;color:var(--expense);text-align:start;unicode-bidi:isolate">2</div><div style="font-size:11.5px;color:var(--expense);font-weight:600">באיחור</div></div>
+                  </div>
+                  
+                  
+                  
+                    <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px">
+                      
+                        <div style="display:flex;flex-direction:column;gap:8px;border-radius:16px;padding:13px 14px;background:var(--glass-2);border:1px solid var(--expense-border)">
+                          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--expense-weak);border:1px solid var(--expense-border);color:var(--expense)">באיחור</span>
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--expense-weak);border:1px solid var(--expense-border);color:var(--expense)">גבוהה</span>
+                            <div style="flex:1"></div>
+                            <span dir="ltr" style="font-size:11px;color:var(--text-faint);unicode-bidi:isolate">01/08/2026</span>
+                          </div>
+                          <div style="font-size:13px;font-weight:700">העברת תשלום ארנונה</div>
+                          
+                            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-faint)"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>משויך להלוואה: משכנתא</div>
+                          
+                        </div>
+                      
+                        <div style="display:flex;flex-direction:column;gap:8px;border-radius:16px;padding:13px 14px;background:var(--glass-2);border:1px solid var(--border)">
+                          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted)">בטיפול</span>
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--warning-weak);border:1px solid var(--warning-border);color:var(--warning)">בינונית</span>
+                            <div style="flex:1"></div>
+                            <span dir="ltr" style="font-size:11px;color:var(--text-faint);unicode-bidi:isolate">06/08/2026</span>
+                          </div>
+                          <div style="font-size:13px;font-weight:700">בדיקת חיוב כאל שלא זוהה</div>
+                          
+                            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-faint)"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>משויך לתנועה: PAYPAL *STEAM</div>
+                          
+                        </div>
+                      
+                        <div style="display:flex;flex-direction:column;gap:8px;border-radius:16px;padding:13px 14px;background:var(--glass-2);border:1px solid var(--border)">
+                          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted)">פתוח</span>
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted)">נמוכה</span>
+                            <div style="flex:1"></div>
+                            <span dir="ltr" style="font-size:11px;color:var(--text-faint);unicode-bidi:isolate">07/08/2026</span>
+                          </div>
+                          <div style="font-size:13px;font-weight:700">סגירת רשימת קניות שבועית</div>
+                          
+                        </div>
+                      
+                    </div>
+                  
+                </div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+                <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                  <div style="display:flex;align-items:flex-start;gap:10px">
+                    <div ><div style="font-size:15.5px;font-weight:700">הלוואות</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">שלוש ההלוואות הגדולות</div></div>
+                    <div style="flex:1"></div>
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-faint)">יתרה נכון להיום</span>
+                  </div>
+                  <div style="margin-top:14px;border-radius:16px;padding:15px;background:var(--glass-2);border:1px solid var(--border);display:flex;align-items:center;gap:12px">
+                    <span style="width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--blue) 16%, transparent);color:var(--blue)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></span>
+                    <div style="flex:1"><div style="font-size:12px;color:var(--text-muted);font-weight:600">סך החוב הנוכחי</div><div dir="ltr" style="font-size:22px;font-weight:800;text-align:start;unicode-bidi:isolate;margin-top:2px">₪412,800</div></div>
+                  </div>
+                  
+                  
+                  
+                  
+                    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+                      
+                        <div style="border-radius:16px;padding:14px;background:var(--glass-2);border:1px solid var(--border)">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <div style="flex:1;min-width:0"><div style="font-size:13.5px;font-weight:700">משכנתא</div><div style="font-size:11.5px;color:var(--text-faint)">בנק לאומי · נותרו 62 תשלומים</div></div>
+                            <div style="text-align:start"><div dir="ltr" style="font-size:15px;font-weight:800;unicode-bidi:isolate">₪318,000</div><div style="font-size:11px;color:var(--text-faint)">החזר <span dir="ltr" style="unicode-bidi:isolate">₪4,120</span></div></div>
+                          </div>
+                          <div style="height:6px;border-radius:99px;background:var(--track);overflow:hidden;margin-top:10px"><div style="height:100%;width:41%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--primary-2))"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px">41% מהקרן נפרעה</div>
+                        </div>
+                      
+                        <div style="border-radius:16px;padding:14px;background:var(--glass-2);border:1px solid var(--border)">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <div style="flex:1;min-width:0"><div style="font-size:13.5px;font-weight:700">הלוואת רכב</div><div style="font-size:11.5px;color:var(--text-faint)">מימון ישיר · נותרו 41 תשלומים</div></div>
+                            <div style="text-align:start"><div dir="ltr" style="font-size:15px;font-weight:800;unicode-bidi:isolate">₪74,300</div><div style="font-size:11px;color:var(--text-faint)">החזר <span dir="ltr" style="unicode-bidi:isolate">₪1,850</span></div></div>
+                          </div>
+                          <div style="height:6px;border-radius:99px;background:var(--track);overflow:hidden;margin-top:10px"><div style="height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--primary-2))"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px">38% מהקרן נפרעה</div>
+                        </div>
+                      
+                        <div style="border-radius:16px;padding:14px;background:var(--glass-2);border:1px solid var(--border)">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <div style="flex:1;min-width:0"><div style="font-size:13.5px;font-weight:700">שיפוץ דירה</div><div style="font-size:11.5px;color:var(--text-faint)">בנק הפועלים · נותרו 21 תשלומים</div></div>
+                            <div style="text-align:start"><div dir="ltr" style="font-size:15px;font-weight:800;unicode-bidi:isolate">₪20,500</div><div style="font-size:11px;color:var(--text-faint)">החזר <span dir="ltr" style="unicode-bidi:isolate">₪980</span></div></div>
+                          </div>
+                          <div style="height:6px;border-radius:99px;background:var(--track);overflow:hidden;margin-top:10px"><div style="height:100%;width:58%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--primary-2))"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px">58% מהקרן נפרעה</div>
+                        </div>
+                      
+                    </div>
+                  
+                </div>
+
+                <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                  <div style="display:flex;align-items:flex-start;gap:10px">
+                    <div ><div style="font-size:15.5px;font-weight:700">ניצול תקציב</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">ארבע הקטגוריות הפעילות</div></div>
+                    <div style="flex:1"></div>
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-faint)">החודש הנוכחי · אוגוסט 2026</span>
+                  </div>
+                  
+                  
+                  
+                    <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
+                      
+                        <div >
+                          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:600">מזון וסופר</span><span dir="ltr" style="unicode-bidi:isolate;font-size:12.5px;font-weight:800;color:var(--primary-2)">68%</span></div>
+                          <div style="height:8px;border-radius:99px;background:var(--track);overflow:hidden"><div style="height:100%;width:68%;border-radius:99px;background:var(--primary-2)"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><span >תוכנן</span><span dir="ltr" style="unicode-bidi:isolate">₪3,000</span><span >·</span><span >בוצע</span><span dir="ltr" style="unicode-bidi:isolate">₪2,040</span></div>
+                        </div>
+                      
+                        <div >
+                          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:600">תחבורה</span><span dir="ltr" style="unicode-bidi:isolate;font-size:12.5px;font-weight:800;color:var(--warning)">96%</span></div>
+                          <div style="height:8px;border-radius:99px;background:var(--track);overflow:hidden"><div style="height:100%;width:96%;border-radius:99px;background:var(--warning)"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><span >תוכנן</span><span dir="ltr" style="unicode-bidi:isolate">₪1,200</span><span >·</span><span >בוצע</span><span dir="ltr" style="unicode-bidi:isolate">₪1,152</span></div>
+                        </div>
+                      
+                        <div >
+                          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:600">פנאי</span><span dir="ltr" style="unicode-bidi:isolate;font-size:12.5px;font-weight:800;color:var(--expense)">124%</span></div>
+                          <div style="height:8px;border-radius:99px;background:var(--track);overflow:hidden"><div style="height:100%;width:100%;border-radius:99px;background:var(--expense)"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><span >תוכנן</span><span dir="ltr" style="unicode-bidi:isolate">₪1,200</span><span >·</span><span >בוצע</span><span dir="ltr" style="unicode-bidi:isolate">₪1,488</span></div>
+                        </div>
+                      
+                        <div >
+                          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:600">חשבונות הבית</span><span dir="ltr" style="unicode-bidi:isolate;font-size:12.5px;font-weight:800;color:var(--primary-2)">52%</span></div>
+                          <div style="height:8px;border-radius:99px;background:var(--track);overflow:hidden"><div style="height:100%;width:52%;border-radius:99px;background:var(--primary-2)"></div></div>
+                          <div style="font-size:11px;color:var(--text-faint);margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><span >תוכנן</span><span dir="ltr" style="unicode-bidi:isolate">₪2,400</span><span >·</span><span >בוצע</span><span dir="ltr" style="unicode-bidi:isolate">₪1,248</span></div>
+                        </div>
+                      
+                    </div>
+                  
+                </div>
+              </div>
+
+              <div style="border-radius:24px;padding:22px;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);box-shadow:var(--shadow)">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <div ><div style="font-size:15.5px;font-weight:700">התנועות האחרונות</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">חמש הרשומות שנוספו לאחרונה</div></div>
+                  <div style="flex:1"></div>
+                  <span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:var(--glass-2);border:1px solid var(--border);color:var(--text-faint)">ללא תלות בחודש הנבחר</span>
+                  <a href="#" style="display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700">לכל התנועות<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a>
+                </div>
+                
+                
+                
+                  <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+                    
+                      <div style="display:flex;align-items:center;gap:12px;border-radius:14px;padding:11px 13px;background:var(--glass-2);border:1px solid var(--border)">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:color-mix(in srgb,var(--mint) 15%, transparent);border:1px solid color-mix(in srgb,var(--mint) 32%, transparent);color:var(--mint)">מזון וסופר</span>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">קניות שבועיות — רמי לוי</div><div style="font-size:11px;color:var(--text-faint)"><span dir="ltr" style="unicode-bidi:isolate">05/08/2026</span> · ויזה כאל •4821</div></div>
+                        <div dir="ltr" style="padding:12px 14px;unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:14px;color:var(--expense);white-space:nowrap">−₪342</div>
+                      </div>
+                    
+                      <div style="display:flex;align-items:center;gap:12px;border-radius:14px;padding:11px 13px;background:var(--glass-2);border:1px solid var(--border)">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:color-mix(in srgb,var(--income) 15%, transparent);border:1px solid color-mix(in srgb,var(--income) 32%, transparent);color:var(--income)">משכורת</span>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">משכורת יולי</div><div style="font-size:11px;color:var(--text-faint)"><span dir="ltr" style="unicode-bidi:isolate">04/08/2026</span> · העברה בנקאית</div></div>
+                        <div dir="ltr" style="padding:12px 14px;unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:14px;color:var(--income);white-space:nowrap">+₪18,450</div>
+                      </div>
+                    
+                      <div style="display:flex;align-items:center;gap:12px;border-radius:14px;padding:11px 13px;background:var(--glass-2);border:1px solid var(--border)">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:color-mix(in srgb,var(--uncat) 15%, transparent);border:1px solid color-mix(in srgb,var(--uncat) 32%, transparent);color:var(--uncat)">ללא קטגוריה</span>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">PAYPAL *STEAM</div><div style="font-size:11px;color:var(--text-faint)"><span dir="ltr" style="unicode-bidi:isolate">03/08/2026</span> · מקס •7710</div></div>
+                        <div dir="ltr" style="padding:12px 14px;unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:14px;color:var(--expense);white-space:nowrap">−₪129</div>
+                      </div>
+                    
+                      <div style="display:flex;align-items:center;gap:12px;border-radius:14px;padding:11px 13px;background:var(--glass-2);border:1px solid var(--border)">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:color-mix(in srgb,var(--blue) 15%, transparent);border:1px solid color-mix(in srgb,var(--blue) 32%, transparent);color:var(--blue)">תחבורה</span>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">דלק פז</div><div style="font-size:11px;color:var(--text-faint)"><span dir="ltr" style="unicode-bidi:isolate">02/08/2026</span> · ויזה כאל •4821</div></div>
+                        <div dir="ltr" style="padding:12px 14px;unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:14px;color:var(--expense);white-space:nowrap">−₪420</div>
+                      </div>
+                    
+                      <div style="display:flex;align-items:center;gap:12px;border-radius:14px;padding:11px 13px;background:var(--glass-2);border:1px solid var(--border)">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:8px;background:color-mix(in srgb,var(--primary-2) 15%, transparent);border:1px solid color-mix(in srgb,var(--primary-2) 32%, transparent);color:var(--primary-2)">לגו</span>
+                        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LEGO 75367-1 — Venator</div><div style="font-size:11px;color:var(--text-faint)"><span dir="ltr" style="unicode-bidi:isolate">02/08/2026</span> · מקס •7710</div></div>
+                        <div dir="ltr" style="padding:12px 14px;unicode-bidi:isolate;text-align:start;font-weight:800;letter-spacing:-.01em;font-size:14px;color:var(--expense);white-space:nowrap">−₪1,290</div>
+                      </div>
+                    
+                  </div>
+                
+              </div>
+            </div>
+            
+          </div>
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+          
+          
+
+        </div>
+      </main>
+    </div>
+  </div>
+  
+
+  
+  
+  <div style="position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%);z-index:70;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:10px 14px;border-radius:16px;background:var(--glass-solid);border:1px dashed var(--border-strong);box-shadow:var(--shadow-lg);max-width:min(94vw,1000px)">
+    <div style="display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;color:var(--text-faint);white-space:nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>כלי סקירה · אינו חלק מהאפליקציה</div>
+    
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:10.5px;color:var(--text-faint);font-weight:600">מסך</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--primary-weak);border:1px solid var(--primary-border);color:var(--primary-2);padding:5px 10px;font-size:11.5px">לוח בקרה</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">תנועות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">תנועה חדשה</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">עריכת תנועה</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">תקציב חודשי</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">סיכום שנתי</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">הלוואות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">מטלות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">ייבוא</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">קניות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">לגו</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">הגדרות</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:10.5px;color:var(--text-faint);font-weight:600">מצב נתונים</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--primary-weak);border:1px solid var(--primary-border);color:var(--primary-2);padding:5px 10px;font-size:11.5px">מלא</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">טעינה</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">טעינה חלקית</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">ריק</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">שגיאה</span>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:10.5px;color:var(--text-faint);font-weight:600">מערכת עיצוב</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">יסודות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">רכיבים</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">רספונסיביות</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;background:var(--glass-2);border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;font-size:11.5px">מסירה</span>
+        </div>
+      </div>
+    
+    <button aria-label="כיווץ כלי הסקירה" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:9px;background:transparent;color:var(--text-faint);cursor:pointer" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0;"><path d="m6 9 6 6 6-6"/></svg></button>
+  </div>
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+</div>
+</div></body></html>

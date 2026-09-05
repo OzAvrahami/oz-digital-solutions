@@ -11,7 +11,7 @@ interface AffiliateDisclosureProps {
 
 export default function AffiliateDisclosure({ locale }: AffiliateDisclosureProps) {
   return (
-    <aside className="mt-8 rounded-control border border-white/[0.08] bg-white/[0.025] px-5 py-4 text-[13px] leading-[1.7] text-text-quiet">
+    <aside className="guide-reading-disclosure mt-8 rounded-control border px-5 py-4 text-[13px] leading-[1.7]">
       {disclosureByLocale[locale]}
     </aside>
   )
