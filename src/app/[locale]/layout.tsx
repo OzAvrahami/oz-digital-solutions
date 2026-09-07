@@ -1,27 +1,24 @@
 import type { Metadata } from 'next'
-import { Heebo, IBM_Plex_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import WhatsAppAction from '@/components/contact/WhatsAppAction'
+import Preferences from '@/components/flow/Preferences'
 import PortfolioStructuredData from '@/components/seo/PortfolioStructuredData'
 import { getSiteUrl, siteConfig } from '@/config/site'
 import { getDictionary, getDirection, isLocale, locales } from '@/lib/i18n'
 
 import '../globals.css'
 import '../../components/studio/studio.css'
+import '../../components/flow/flow.css'
+import '../../components/flow/accessibility.css'
+import '../../components/flow/integration.css'
 
-const heebo = Heebo({
-  subsets: ['hebrew', 'latin'],
-  weight: 'variable',
+const heebo = localFont({
+  src: '../../../public/oz-digital/heebo.ttf',
+  weight: '100 900',
   variable: '--font-heebo',
-  display: 'swap',
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-ibm-plex-mono',
   display: 'swap',
 })
 
@@ -98,8 +95,8 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       ],
     },
     icons: {
-      icon: [{ url: getSiteUrl('/icon.svg'), type: 'image/svg+xml' }],
-      shortcut: [getSiteUrl('/icon.svg')],
+      icon: [{ url: getSiteUrl('/oz-digital/favicon.svg'), type: 'image/svg+xml' }],
+      shortcut: [getSiteUrl('/oz-digital/favicon.svg')],
     },
   }
 }
@@ -114,10 +111,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <head>
         <meta {...impactSiteVerification} />
       </head>
-      <body className={`${heebo.variable} ${ibmPlexMono.variable} bg-canvas font-heebo text-text antialiased`}>
+      <body className={`${heebo.variable} flow-site antialiased`}>
         <PortfolioStructuredData />
-        {children}
-        <WhatsAppAction locale={locale} placement="floating" />
+        <Preferences locale={locale}>
+          {children}
+          <WhatsAppAction locale={locale} placement="floating" />
+        </Preferences>
         <GoogleAnalytics measurementId={siteConfig.googleAnalyticsMeasurementId} />
       </body>
     </html>

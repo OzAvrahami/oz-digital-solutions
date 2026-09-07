@@ -1,0 +1,48 @@
+/* Integration of the approved standalone design with existing Next.js surfaces. */
+:root { --font-ibm-plex-mono: ui-monospace, SFMono-Regular, Consolas, monospace; }
+html:has(.flow-site), body.flow-site { background: #fff; color: var(--ink); }
+.flow-site { --font: var(--font-heebo), Arial, sans-serif; font-family: var(--font); overflow-x: clip; }
+.flow-site main { scroll-margin-top: 24px; }
+.flow-site .hero { overflow: clip; }
+.flow-lines, .scene-halo, .hub-orbit { pointer-events: none; }
+.scene-top, .scene-control { z-index: 5; }
+.run-flow { min-height: 44px; }
+.flow-site .guide-reading-surface { --guide-reading-bg: #fff; --guide-reading-panel: #fff; --guide-reading-text: var(--ink); --guide-reading-secondary: var(--muted); --guide-reading-muted: var(--muted); --guide-reading-border: var(--line); --guide-reading-accent-ink: var(--blue-deep); --guide-reading-accent-soft: var(--soft); }
+.flow-site .lang-button, .scene-motion, .menu-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.mobile-navigation { display: none; }
+.flow-site .process-grid { list-style: none; padding: 0; }
+.flow-site .tool-card h3, .flow-site .tool-card h4 { unicode-bidi: isolate; }
+.flow-site .contact-social { flex-wrap: wrap; }
+.flow-site .contact-social [data-whatsapp-contact] { margin-top: 0; padding: 0; border: 0; background: transparent; color: var(--blue-deep); font-size: 14px; }
+.flow-site .contact-social [data-whatsapp-contact] svg { width: 20px; height: 20px; }
+.flow-site .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 18px; align-content: start; margin: 0; width: 100%; min-width: 0; }
+.flow-site .contact-form .form-field { margin: 0; min-width: 0; }
+.flow-site .contact-form :is(.form-message, .studio-form-alert, .studio-form-reassurance) { grid-column: 1 / -1; }
+.flow-site .contact-form input, .flow-site .contact-form textarea { background: #fff; color: var(--ink); border-radius: 12px; }
+.flow-site .studio-form-submit { justify-self: start; grid-column: 1 / -1; }
+.flow-site .studio-form-reassurance { text-align: start; font-size: 13px; }
+.flow-site .footer-service-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px; color: var(--muted); padding-bottom: 20px; }
+.footer-service-links a { min-height: 44px; display: inline-flex; align-items: center; }
+.page-utilities { right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+.flow-site .studio-page { --studio-bg: #fff; --studio-surface: var(--light); --studio-text: var(--ink); --studio-muted: var(--muted); --studio-blue: var(--blue); --studio-line: var(--line); font-family: var(--font); }
+.flow-site .studio-page-hero { background: radial-gradient(ellipse at 15% 44%, #eaf0ff8c, transparent 65%), #fff; }
+.flow-site .studio-page .portfolio-hero-grid, .flow-site .studio-page .portfolio-hero-glow { display: none; }
+.flow-site .studio-page-title { font-weight: 780; line-height: 1.15; }
+.flow-site .studio-page-band { background: var(--soft); }
+.flow-site .studio-page-card { border-radius: var(--radius); box-shadow: none; }
+.flow-site .studio-page-closing { background: var(--soft); box-shadow: none; border-radius: var(--radius); }
+.flow-site .studio-page .font-mono { font-family: var(--font); letter-spacing: .02em; }
+.flow-site .studio-primary-link { background: var(--blue); }
+.flow-site .studio-primary-link:hover { background: var(--blue-deep); }
+.high-contrast .flow-site .studio-page :is(.studio-page-meta, .studio-page-copy, .studio-page-lead, .studio-article-prose p, .studio-form-reassurance) { color: var(--muted); }
+.high-contrast .flow-site .studio-page a { text-underline-offset: 4px; }
+.high-contrast .flow-site .studio-form-field { border-color: #53617a; }
+.statement-page ul { list-style: disc; }
+.statement-page [data-whatsapp-contact] { margin-top: 0; }
+@media (max-width: 760px) {
+  .mobile-navigation { display: block; }
+  .flow-site .mobile-nav.open { display: flex; }
+  .flow-site .contact-form { gap: 18px 10px; }
+  .page-utilities { right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 390px) { .flow-site .contact-form { grid-template-columns: 1fr; } }

@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pathname: '', changeFrequency: 'monthly' as const, priority: 1 },
     ...serviceSlugs.map((slug) => ({ pathname: `/services/${slug}`, changeFrequency: 'monthly' as const, priority: 0.8 })),
     { pathname: '/guides', changeFrequency: 'weekly' as const, priority: 0.8 },
+    { pathname: '/accessibility', changeFrequency: 'yearly' as const, priority: 0.3 },
     ...guideSlugs.map((slug) => ({ pathname: `/guides/${slug}`, changeFrequency: 'monthly' as const, priority: 0.7 })),
   ]
 

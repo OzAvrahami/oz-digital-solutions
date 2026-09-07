@@ -73,7 +73,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="studio-contact-form-fields mx-auto mt-10 flex max-w-[560px] flex-col gap-5 text-start"
+      className="contact-form studio-contact-form-fields"
     >
       <div aria-hidden="true" className="sr-only">
         <label htmlFor={`website-${locale}`}>Website</label>
@@ -95,7 +95,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
         </p>
       ) : null}
 
-      <div className="flex flex-col gap-[9px]">
+      <div className="form-field">
         <label htmlFor={`contact-name-${locale}`} className="studio-form-label text-sm font-medium">
           {content.nameLabel}
         </label>
@@ -103,6 +103,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
           id={`contact-name-${locale}`}
           name="name"
           type="text"
+          autoComplete="name"
           required
           maxLength={100}
           disabled={pending}
@@ -118,7 +119,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
         ) : null}
       </div>
 
-      <div className="flex flex-col gap-[9px]">
+      <div className="form-field">
         <label htmlFor={`contact-details-${locale}`} className="studio-form-label text-sm font-medium">
           {content.contactLabel}
         </label>
@@ -142,7 +143,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
         ) : null}
       </div>
 
-      <div className="flex flex-col gap-[9px]">
+      <div className="form-field form-message">
         <label htmlFor={`contact-message-${locale}`} className="studio-form-label text-sm font-medium">
           {content.messageLabel}
         </label>
@@ -168,7 +169,7 @@ export default function ContactForm({ locale, content }: ContactFormProps) {
       <button
         type="submit"
         disabled={pending}
-        className="studio-form-submit inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-[16.5px] font-semibold text-white transition-colors disabled:cursor-wait disabled:opacity-70"
+        className="button-primary studio-form-submit disabled:cursor-wait disabled:opacity-70"
       >
         {pending ? (
           <span className="size-4 animate-spin rounded-full border-2 border-white/35 border-t-white" aria-hidden="true" />

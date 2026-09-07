@@ -12,6 +12,7 @@ interface LanguageSwitcherProps {
   labels: SiteDictionary['header']
   longEnglishLabel?: boolean
   onNavigate?: () => void
+  compact?: boolean
 }
 
 function subscribeToHash(onStoreChange: () => void) {
@@ -32,9 +33,14 @@ export default function LanguageSwitcher({
   labels,
   longEnglishLabel = false,
   onNavigate,
+  compact = false,
 }: LanguageSwitcherProps) {
   const pathname = usePathname()
   const currentHash = useSyncExternalStore(subscribeToHash, getSupportedHash, getServerHash)
+  if (compact) {
+    const alternate = locale === 'he' ? 'en' : 'he'
+    return <Link className="lang-button" href={`/${alternate}${pathname.replace(/^\/(he|en)/, '')}${currentHash}`} hrefLang={alternate} lang={alternate} aria-label={locale === 'he' ? 'Switch to English' : 'מעבר לעברית'} onClick={onNavigate}>{locale === 'he' ? 'EN' : 'עב׳'}</Link>
+  }
   const options = [
     { locale: 'he' as const, label: labels.hebrewLabel },
     {

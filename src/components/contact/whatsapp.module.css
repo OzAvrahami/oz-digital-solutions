@@ -26,12 +26,8 @@
   position: fixed;
   z-index: 50;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  inset-inline-end: calc(20px + env(safe-area-inset-right, 0px));
+  left: calc(20px + env(safe-area-inset-left, 0px));
   box-shadow: 0 4px 18px #202c4014;
-}
-
-:global([dir='rtl']) .floating {
-  inset-inline-end: calc(20px + env(safe-area-inset-left, 0px));
 }
 
 @media (max-width: 639px) {

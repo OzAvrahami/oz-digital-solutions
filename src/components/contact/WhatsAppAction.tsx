@@ -52,7 +52,7 @@ function WhatsAppLink({ locale, placement, href }: {
       const editing = document.activeElement?.matches('input, textarea, select, [contenteditable="true"]')
 
       // Protect the entire contact form, including when the inline link has scrolled offscreen.
-      if (document.getElementById('mobile-menu') || isVisible(contact) || isVisible(inline) || editing) {
+      if (document.getElementById('mobile-menu') || document.querySelector('dialog[open]') || isVisible(contact) || isVisible(inline) || editing) {
         link.hidden = true
         return
       }
@@ -73,7 +73,7 @@ function WhatsAppLink({ locale, placement, href }: {
 
     // Child changes include streamed route content and opening/closing the mobile menu.
     const mutations = new MutationObserver(scheduleUpdate)
-    mutations.observe(document.body, { childList: true, subtree: true })
+    mutations.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] })
     const resize = new ResizeObserver(scheduleUpdate)
     resize.observe(document.body)
     window.addEventListener('scroll', scheduleUpdate, { passive: true })
