@@ -9,6 +9,7 @@ interface SiteConfig {
   productionSiteUrl: string
   googleAnalyticsMeasurementId: string | null
   email: string | null
+  whatsappNumber: string | null
   linkedInUrl: string | null
   githubUrl: string | null
   cvUrl: string | null
@@ -24,6 +25,8 @@ export const siteConfig = {
   productionSiteUrl: 'https://ozavrahami.co.il',
   googleAnalyticsMeasurementId: 'G-JCD3STPFZP',
   email: 'contact@ozavrahami.co.il',
+  // Owner-confirmed public number, in international digits format for wa.me.
+  whatsappNumber: '972506795903',
   linkedInUrl: 'https://www.linkedin.com/in/oz-avrahami-b209584a/',
   githubUrl: 'https://github.com/OzAvrahami',
   cvUrl: null,

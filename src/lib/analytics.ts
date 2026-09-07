@@ -52,3 +52,17 @@ export function trackAffiliateClick({
     locale,
   })
 }
+
+export function trackWhatsAppClick(locale: Locale, placement: 'contact' | 'floating') {
+  if (!canTrackAnalytics()) return
+
+  try {
+    window.gtag?.('event', 'whatsapp_click', {
+      locale,
+      page_path: window.location.pathname,
+      button_placement: placement,
+    })
+  } catch {
+    // Analytics failures must never prevent the native link from opening.
+  }
+}

@@ -3,6 +3,7 @@ import { Heebo, IBM_Plex_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import WhatsAppAction from '@/components/contact/WhatsAppAction'
 import PortfolioStructuredData from '@/components/seo/PortfolioStructuredData'
 import { getSiteUrl, siteConfig } from '@/config/site'
 import { getDictionary, getDirection, isLocale, locales } from '@/lib/i18n'
@@ -116,6 +117,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body className={`${heebo.variable} ${ibmPlexMono.variable} bg-canvas font-heebo text-text antialiased`}>
         <PortfolioStructuredData />
         {children}
+        <WhatsAppAction locale={locale} placement="floating" />
         <GoogleAnalytics measurementId={siteConfig.googleAnalyticsMeasurementId} />
       </body>
     </html>
