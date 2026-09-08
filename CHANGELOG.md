@@ -2,6 +2,12 @@
 
 Meaningful releases follow `vMAJOR.MINOR.PATCH`. Published GitHub Releases are authoritative; local version metadata and tags alone do not indicate publication.
 
+## Unreleased
+
+### Enhancement
+
+- Refocus the bilingual homepage About section on business needs, websites, systems and automation, and working directly with Oz. Replace employer/team-leadership copy and numeric statistics with two qualitative benefit cards, preserving the approved design and About links. Tracked in [#4](https://github.com/OzAvrahami/oz-digital-solutions/issues/4); follows published v1.1.0.
+
 ## v1.1.0 — prepared, unreleased
 
 Implementation: [#3 — Implement the approved Oz Digital redesign](https://github.com/OzAvrahami/oz-digital-solutions/issues/3). Owner acceptance and all Git/release operations remain pending.

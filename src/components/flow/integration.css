@@ -12,6 +12,9 @@ html:has(.flow-site), body.flow-site { background: #fff; color: var(--ink); }
 .mobile-navigation { display: none; }
 .flow-site .process-grid { list-style: none; padding: 0; }
 .flow-site .tool-card h3, .flow-site .tool-card h4 { unicode-bidi: isolate; }
+.about-proof.about-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.about-proof.about-benefits dt { font-size: 22px; font-weight: 600; line-height: 1.35; color: var(--blue); }
+.about-proof.about-benefits dd { order: 0; direction: inherit; align-self: stretch; font: inherit; font-size: 13px; line-height: 1.6; letter-spacing: normal; color: var(--muted); }
 .flow-site .contact-social { flex-wrap: wrap; }
 .flow-site .contact-social [data-whatsapp-contact] { margin-top: 0; padding: 0; border: 0; background: transparent; color: var(--blue-deep); font-size: 14px; }
 .flow-site .contact-social [data-whatsapp-contact] svg { width: 20px; height: 20px; }
@@ -40,6 +43,7 @@ html:has(.flow-site), body.flow-site { background: #fff; color: var(--ink); }
 .statement-page ul { list-style: disc; }
 .statement-page [data-whatsapp-contact] { margin-top: 0; }
 @media (max-width: 760px) {
+  .about-proof.about-benefits dt { font-size: 20px; }
   .mobile-navigation { display: block; }
   .flow-site .mobile-nav.open { display: flex; }
   .flow-site .contact-form { gap: 18px 10px; }
