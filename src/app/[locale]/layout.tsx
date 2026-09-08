@@ -8,6 +8,7 @@ import Preferences from '@/components/flow/Preferences'
 import PortfolioStructuredData from '@/components/seo/PortfolioStructuredData'
 import { getSiteUrl, siteConfig } from '@/config/site'
 import { getDictionary, getDirection, isLocale, locales } from '@/lib/i18n'
+import { getSocialImage } from '@/lib/metadata'
 
 import '../globals.css'
 import '../../components/studio/studio.css'
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   const canonicalUrl = getSiteUrl(`/${locale}`)
   const hebrewUrl = getSiteUrl('/he')
   const englishUrl = getSiteUrl('/en')
-  const openGraphImageUrl = getSiteUrl(`/${locale}/opengraph-image`)
+  const socialImage = getSocialImage(locale)
   const openGraphLocale = locale === 'he' ? 'he_IL' : 'en_US'
   const alternateOpenGraphLocale = locale === 'he' ? 'en_US' : 'he_IL'
 
@@ -74,14 +75,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       url: canonicalUrl,
       locale: openGraphLocale,
       alternateLocale: [alternateOpenGraphLocale],
-      images: [
-        {
-          url: openGraphImageUrl,
-          width: 1200,
-          height: 630,
-          alt: dictionary.metadata.title,
-        },
-      ],
+      images: [socialImage],
     },
     twitter: {
       card: 'summary_large_image',
@@ -89,8 +83,8 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       description: dictionary.metadata.description,
       images: [
         {
-          url: openGraphImageUrl,
-          alt: dictionary.metadata.title,
+          url: socialImage.url,
+          alt: socialImage.alt,
         },
       ],
     },

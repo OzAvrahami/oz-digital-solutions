@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
 
 import { getSiteUrl, siteConfig } from '@/config/site'
+import socialImages from '@/content/social-images.json'
 import type { Locale } from '@/lib/i18n'
+
+export function getSocialImage(locale: Locale) {
+  const { path, ...image } = socialImages[locale]
+  return { ...image, url: getSiteUrl(path) }
+}
 
 interface LocalizedMetadataOptions {
   locale: Locale
@@ -20,7 +26,7 @@ export function createLocalizedMetadata({
 }: LocalizedMetadataOptions): Metadata {
   const localizedPath = `/${locale}${pathname}`
   const canonicalUrl = getSiteUrl(localizedPath)
-  const openGraphImageUrl = getSiteUrl(`/${locale}/opengraph-image`)
+  const socialImage = getSocialImage(locale)
 
   return {
     metadataBase: new URL(siteConfig.productionSiteUrl),
@@ -41,20 +47,13 @@ export function createLocalizedMetadata({
       url: canonicalUrl,
       locale: locale === 'he' ? 'he_IL' : 'en_US',
       alternateLocale: [locale === 'he' ? 'en_US' : 'he_IL'],
-      images: [
-        {
-          url: openGraphImageUrl,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [socialImage],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [{ url: openGraphImageUrl, alt: title }],
+      images: [{ url: socialImage.url, alt: socialImage.alt }],
     },
   }
 }

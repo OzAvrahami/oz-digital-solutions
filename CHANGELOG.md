@@ -4,6 +4,10 @@ Meaningful releases follow `vMAJOR.MINOR.PATCH`. Published GitHub Releases are a
 
 ## Unreleased
 
+### Bug fixes
+
+- Fix reversed Hebrew and outdated dark branding in social-sharing previews with browser-rendered, localized light-design PNGs and fingerprinted Open Graph/Twitter image URLs. Include offline regeneration tooling using local fonts. Tracked in [#5](https://github.com/OzAvrahami/oz-digital-solutions/issues/5).
+
 ### Enhancement
 
 - Refocus the bilingual homepage About section on business needs, websites, systems and automation, and working directly with Oz. Replace employer/team-leadership copy and numeric statistics with two qualitative benefit cards, preserving the approved design and About links. Tracked in [#4](https://github.com/OzAvrahami/oz-digital-solutions/issues/4); follows published v1.1.0.
