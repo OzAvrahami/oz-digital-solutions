@@ -12,6 +12,8 @@ Meaningful releases follow `vMAJOR.MINOR.PATCH`. Published GitHub Releases are a
 
 ### Enhancement
 
+- Add a branded Hebrew/English 404 experience with localized recovery links, accessible responsive styling and real HTTP 404/noindex behavior. Unknown locales fall back to Hebrew. Tracked in [#7](https://github.com/OzAvrahami/oz-digital-solutions/issues/7).
+
 - Refocus the bilingual homepage About section on business needs, websites, systems and automation, and working directly with Oz. Replace employer/team-leadership copy and numeric statistics with two qualitative benefit cards, preserving the approved design and About links. Tracked in [#4](https://github.com/OzAvrahami/oz-digital-solutions/issues/4); follows published v1.1.0.
 
 ## v1.1.0 — prepared, unreleased

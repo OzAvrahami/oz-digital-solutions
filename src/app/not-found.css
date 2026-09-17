@@ -1,0 +1,65 @@
+/* Scoped to the global 404; approved flow colors, type and controls are reused. */
+.not-found-site {
+  --font: var(--font-heebo), Arial, sans-serif;
+  font: 400 16px/1.75 var(--font);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: visible;
+  background: radial-gradient(ellipse at 20% 40%, #eef2ff 0, transparent 60%), #fff;
+}
+.not-found-header, .not-found-footer {
+  width: min(1240px, calc(100% - 96px));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+}
+.not-found-header { min-height: 98px; border-bottom: 1px solid var(--line); }
+.not-found-main { width: min(1100px, 100%); margin: auto; padding: 56px 32px; }
+.not-found-card {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 18px 60px #25396708;
+}
+.not-found-visual {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding: 48px 24px;
+  border-radius: inherit;
+  background: radial-gradient(ellipse, #e4eaff 0, var(--soft) 45%, #f6f8fc 75%);
+}
+.not-found-number { color: var(--blue); font-size: clamp(100px, 13vw, 176px); font-weight: 800; line-height: 1.2; letter-spacing: -.06em; }
+.not-found-copy { padding: 56px 40px; }
+.not-found-copy h1 { font-size: clamp(30px, 3.2vw, 42px); text-wrap: balance; }
+.not-found-copy p { margin-top: 20px; max-width: 38ch; font-size: 17px; line-height: 1.8; }
+.not-found-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+.not-found-actions a { min-height: 48px; }
+.not-found-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border: 1px solid #c4cde0; border-radius: 50px; font-size: 15px; font-weight: 550; }
+.not-found-secondary:hover { background: var(--soft); border-color: var(--blue); }
+.not-found-services { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 20px; color: var(--blue-deep); font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+[dir='ltr'] .not-found-arrow { transform: scaleX(-1); }
+.not-found-footer { justify-content: center; min-height: 76px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.not-found-footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+.high-contrast .not-found-card, .high-contrast .not-found-secondary { border-color: var(--line); }
+.high-contrast .not-found-visual { background: var(--soft); }
+@media (min-width: 1024px) and (min-height: 720px) {
+  /* Same total padding and card size; lift the card 48px on roomy desktops. */
+  .not-found-main { padding-block: 8px 104px; }
+}
+@media (max-width: 767px) {
+  .not-found-header, .not-found-footer { width: calc(100% - 40px); }
+  .not-found-header { min-height: 82px; }
+  .not-found-main { padding: 28px 20px; }
+  .not-found-card { grid-template-columns: minmax(0, 1fr); }
+  .not-found-visual { padding: 16px 24px; border-end-start-radius: 0; border-end-end-radius: 0; }
+  .not-found-copy { padding: 28px 24px; }
+  .not-found-copy p { font-size: 16px; margin-top: 16px; }
+  .not-found-actions { margin-top: 24px; gap: 12px; }
+  .not-found-actions a { flex: 1 1 auto; padding-inline: 18px; }
+  .not-found-footer { min-height: 64px; }
+}
