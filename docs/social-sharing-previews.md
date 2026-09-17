@@ -53,11 +53,12 @@ REVIEW_ORIGIN=http://127.0.0.1:3008 node scripts/check-social-metadata.mjs
 
 The focused check uses only localhost and parses returned HTML without executing page scripts. It checks normal, WhatsApp, Facebook and Twitter user-agent requests for:
 
-- Root 307 redirect to `/he` and the resulting Hebrew response.
+- Root permanent HTTP 308 redirect to `/he` and the resulting Hebrew response (updated for [#6](https://github.com/OzAvrahami/oz-digital-solutions/issues/6)).
 - Both homepages, `/services/websites`, `/guides`, and `/guides/business-website-cost-2026`: 32 page responses, exact dictionary titles/descriptions, localized images/alt text, canonical/hreflang, locale/direction and website/article types.
 - Exactly one Open Graph and Twitter image per page, accurate image dimensions/MIME, absolute production image URLs, and no stale generator references.
 - Eight asset responses (both locales for each user agent): fetch the advertised production image path from the local server, assert 200/image/png, verify PNG signature/dimensions, byte equality with local assets, fingerprint and no crawl-blocking headers. No request to the undeployed production asset URLs is implied.
-- Robots/sitemap availability and removed generator 404s.
+- Robots allow rule, production host and sitemap reference; exact localized sitemap content URLs with no duplicate/root homepage entry.
+- Both accessibility routes return 200. Unknown root/localized paths, invalid service/guide slugs and removed generator URLs (including historical query strings) remain 404 without redirects.
 
 Completed: all above checks, lint, typecheck, production build and repeat-generation byte comparison passed. The existing build-time Impact tag verification passed for 20 prerendered HTML files. The existing Browserslist data-age warning remains.
 

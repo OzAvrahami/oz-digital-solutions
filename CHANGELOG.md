@@ -6,6 +6,8 @@ Meaningful releases follow `vMAJOR.MINOR.PATCH`. Published GitHub Releases are a
 
 ### Bug fixes
 
+- Make the root redirect to `/he` permanent (HTTP 308), preserving localized canonical URLs, hreflang, sitemap and normal 404 behavior. Tracked in [#6](https://github.com/OzAvrahami/oz-digital-solutions/issues/6).
+
 - Fix reversed Hebrew and outdated dark branding in social-sharing previews with browser-rendered, localized light-design PNGs and fingerprinted Open Graph/Twitter image URLs. Include offline regeneration tooling using local fonts. Tracked in [#5](https://github.com/OzAvrahami/oz-digital-solutions/issues/5).
 
 ### Enhancement

@@ -30,15 +30,21 @@ try {
   for (const [agent, userAgent] of Object.entries(agents)) {
     const get = (path, redirect = 'error') => fetch(new URL(path, origin), { headers: { 'user-agent': userAgent }, redirect })
     const rootResponse = await get('/', 'manual')
-    assert.equal(rootResponse.status, 307)
-    assert.equal(new URL(rootResponse.headers.get('location'), origin).pathname, '/he')
+    assert.equal(rootResponse.status, 308, `${agent}: root must redirect permanently`)
+    assert.equal(rootResponse.headers.get('location'), '/he')
     const redirected = await get('/', 'follow')
     assert.equal(new URL(redirected.url).pathname, '/he')
     assert.equal(redirected.status, 200)
+    const expectedSitemapUrls = []
     for (const locale of ['he', 'en']) {
       const dictionary = (await loadContent(`src/content/${locale}.ts`))[locale]
       const revenueModule = await loadContent(`src/content/revenue/${locale}.ts`)
       const revenue = revenueModule[locale === 'he' ? 'revenueHe' : 'revenueEn']
+      expectedSitemapUrls.push(...[
+        '', '/guides', '/accessibility',
+        ...Object.keys(revenue.services).map(slug => `/services/${slug}`),
+        ...Object.keys(revenue.guides).map(slug => `/guides/${slug}`),
+      ].map(suffix => `https://ozavrahami.co.il/${locale}${suffix}`))
       const routes = [
         ['', dictionary.metadata, 'website'],
         ['/services/websites', revenue.services.websites.metadata, 'website'],
@@ -99,18 +105,31 @@ try {
         assert.doesNotMatch(values('robots').join(','), /noindex|none|nofollow|noimageindex/i)
         pages++
       }
-      assert.equal((await get(`/${locale}/opengraph-image`)).status, 404, 'Obsolete generator is still served')
+      assert.equal((await get(`/${locale}/accessibility`)).status, 200, `${agent}: accessibility route`)
+      for (const suffix of ['/issue-6-missing-page', '/services/issue-6-missing-service', '/guides/issue-6-missing-guide', '/opengraph-image', '/opengraph-image?0e1efc259f159f93']) {
+        const missing = await get(`/${locale}${suffix}`, 'manual')
+        assert.equal(missing.status, 404, `${agent}: /${locale}${suffix} must remain 404`)
+        assert.equal(missing.headers.get('location'), null, 'Missing URL must not redirect')
+      }
     }
+    const missing = await get('/issue-6-missing-path', 'manual')
+    assert.equal(missing.status, 404, `${agent}: unknown root path must remain 404`)
+    assert.equal(missing.headers.get('location'), null, 'Unknown root path must not redirect')
     const robots = await get('/robots.txt')
     assert.equal(robots.status, 200)
     const robotsText = await robots.text()
     assert.match(robotsText, /Allow: \/\s/)
     assert.doesNotMatch(robotsText, /Disallow:\s*\//)
+    assert.match(robotsText, /^Sitemap: https:\/\/ozavrahami\.co\.il\/sitemap\.xml\s*$/m)
+    assert.match(robotsText, /^Host: https:\/\/ozavrahami\.co\.il\s*$/m)
     const sitemap = await get('/sitemap.xml')
     assert.equal(sitemap.status, 200)
     const sitemapText = await sitemap.text()
-    for (const locale of ['he', 'en']) assert.ok(sitemapText.includes(`https://ozavrahami.co.il/${locale}`))
-    console.log(`PASS ${agent}: redirect, bilingual home/service/guides/article SEO, static PNGs, robots/sitemap, removed generator`)
+    const sitemapUrls = [...sitemapText.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url)
+    assert.ok(sitemapUrls.every(url => new URL(url).pathname !== '/'), 'Root must not be a sitemap content URL')
+    assert.equal(new Set(sitemapUrls).size, sitemapUrls.length, 'Sitemap must not contain duplicate URLs')
+    assert.deepEqual(sitemapUrls.sort(), expectedSitemapUrls.sort(), 'Preserve all localized sitemap routes')
+    console.log(`PASS ${agent}: root 308 → /he, bilingual home/service/guides/article SEO, accessibility 200, static PNGs, robots/${sitemapUrls.length}-URL sitemap, 11 missing/retired URLs remain 404`)
   }
   console.log(`PASS ${pages} page responses and ${assets} PNG responses; no external requests or form submissions.`)
 } finally {
